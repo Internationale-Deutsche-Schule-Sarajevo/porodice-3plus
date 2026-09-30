@@ -614,7 +614,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
       <div class="step">
         <span class="step-num">1</span>
         <h3>Unesite podatke o porodici</h3>
-        <p>Odaberite status lica (domaće/strano) i ukupan broj djece. Djeca se navode <strong>redoslijedom rođenja</strong> (1. = najstarije). Za svako dijete odaberite status i, ako pohađa IMH/IDSS predškolski program, tip boravka (cjelodnevni/poludnevni).</p>
+        <p>Odaberite status lica (domaće/strano) i ukupan broj djece. Djeca se navode <strong>redoslijedom rođenja</strong> (1. = najstarije). Za svako dijete odaberite status (IMH, IDSS, drugi vrtić, škola, fakultet, tek rođeno) i, ako pohađa IMH/IDSS predškolski program, označite da li se roditelj odriče sufinansiranja.</p>
       </div>
       <div class="step">
         <span class="step-num">2</span>
@@ -669,7 +669,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 
         <label class="checkbox-row">
           <input type="checkbox" id="august" oninput="izracunaj()" onchange="izracunaj()">
-          <span><strong>Obračun za august</strong> (posljednji mjesec školske godine) — subvencija Ministarstva umanjuje se za 50&nbsp;%.</span>
+          <span><strong>Obračun za august</strong> — Program: u mjesecu augustu sufinansiranje po djetetu umanjuje se za 50&nbsp;%.</span>
         </label>
 
         <div id="childrenContainer"></div>
@@ -731,7 +731,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
     <div class="grid-2">
       <div class="card">
         <div class="card-title">Kategorije sufinansiranja</div>
-        <div class="card-desc">Članovi 6–10 Programa i Pravilnika o sufinansiranju.</div>
+        <div class="card-desc">Program sufinansiranja i članovi 6–10 Pravilnika o primjeni Programa.</div>
 
         <div class="legal-item">
           <div class="ref">Član 6 · Redovno sufinansiranje</div>
@@ -743,7 +743,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
         </div>
         <div class="legal-item">
           <div class="ref">Član 8 · Porodice 3+ — besplatan boravak</div>
-          <div class="txt">Ako dvoje djece iz porodice sa troje i više djece već pohađa predškolsku ustanovu, boravak <strong>trećeg i svakog narednog djeteta u vrtiću je besplatan</strong> (subvencija 100&nbsp;% cijene).</div>
+          <div class="txt">Ako dvoje djece iz porodice sa troje i više djece već pohađa predškolsku ustanovu, boravak <strong>trećeg i svakog narednog djeteta u vrtiću je besplatan</strong>.</div>
         </div>
         <div class="legal-item">
           <div class="ref">Član 9 · Porodice 3+ — 80&nbsp;% cijene</div>
@@ -773,19 +773,19 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
         </div>
         <div class="result-alert info">
           <span class="ico" aria-hidden="true">📅</span>
-          <span><strong>August</strong> je posljednji mjesec školske godine — subvencija po djetetu umanjuje se za <strong>50&nbsp;%</strong>. Septembar je početak naredne školske godine. (Program: period sufinansiranja 01.09.2026.–30.08.2027.; umanjenje se odnosi na august koji završava školsku godinu.)</span>
+          <span><strong>August:</strong> Program propisuje da se sufinansiranje po djetetu u mjesecu augustu umanjuje za <strong>50&nbsp;%</strong>. Period sufinansiranja je 01.09.2026.–30.08.2027. Tekst Programa navodi „august 2026.“, što je izvan tog perioda; kalkulator zato umanjenje primjenjuje na august na kraju perioda (2027.). Preporučuje se potvrda Ministarstva.</span>
         </div>
         <div class="result-alert info">
           <span class="ico" aria-hidden="true">📉</span>
-          <span><strong>Ispis sredinom mjeseca:</strong> vrtić naplaćuje puni mjesec, a subvencija se obračunava <strong>proporcionalno broju dana</strong> pohađanja (datum ispisa u EMIS-u).</span>
+          <span><strong>Ispis:</strong> mjesečna školarina plaća se u punom iznosu bez obzira na datum posljednjeg boravka u mjesecu; depozit se zadržava, a školarina za preostalo dijete iz iste porodice vraća se na iznos „prvog djeteta“ (IMH 710 / 810 KM, IDSS 750 / 850 KM) — Pravilnik o cijenama, čl. 7. Vrtić mora odmah prijaviti Ministarstvu promjene koje umanjuju sufinansiranje (Program, Opće napomene t. 4–7). Obračun subvencije za dio mjeseca Program ne propisuje.</span>
         </div>
         <div class="result-alert info">
           <span class="ico" aria-hidden="true">🌗</span>
-          <span><strong>Poludnevni boravak</strong> nije predviđen Pravilnikom o cijenama. Izuzetno, ako ga odobri Upravni odbor, obračunava se kao <strong>pola mjesečne školarine</strong>, a jednokratni troškovi (upis, depozit, participacija) također u polovini.</span>
+          <span><strong>Poludnevni boravak:</strong> Cjenovnik i Pravilnik o cijenama utvrđuju školarinu samo za cjelodnevni program. Iznose iz Programa za poludnevni boravak (120 / 150 KM) kalkulator ne obračunava jer IMH nema cijenu poludnevnog boravka.</span>
         </div>
         <div class="result-alert info">
           <span class="ico" aria-hidden="true">🏫</span>
-          <span><strong>IMH i IDSS Predškolska</strong> su programi iste ustanove (P.P.U. IMH) i dijele isti cjenovnik — popust za naredno dijete i oslobađanje za 3.+ dijete primjenjuju se objedinjeno. <strong>IDSS osnovna škola</strong> je posebno pravno lice i ne ulazi u ovaj obračun.</span>
+          <span><strong>IMH i IDSS Predškolska</strong> su programi iste ustanove (P.P.U. IMH) — popust za naredno dijete i oslobađanje za 3.+ dijete primjenjuju se objedinjeno. <strong>IDSS osnovna škola</strong> je posebno pravno lice i ne ulazi u ovaj obračun.</span>
         </div>
       </div>
     </div>
@@ -852,7 +852,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
       </div>
 
       <div class="price-note">
-        <strong>Napomena:</strong> Uplate upisnine, depozita i školarine vrše se na bankovni račun P.P.U. International Montessori House Sarajevo, SPARKASSE BANK d.d. Sarajevo, broj računa: 1990 4900 5848 7943, IBAN BA39 1990490058487943, SWIFT (BIC) ABSBBA22. Troškove bankovnih naknada preuzima roditelj/staratelj. Plaćanje obaveza vrši se najkasnije do 5. u tekućem mjesecu. <strong>Poludnevni boravak</strong> nije predviđen pravilnikom; izuzetno, ako Upravni odbor odobri, obračunava se pola cijene školarine i ostali troškovi u polovini cijene.
+        <strong>Napomena:</strong> Uplate upisnine, depozita i školarine vrše se na bankovni račun P.P.U. International Montessori House Sarajevo, SPARKASSE BANK d.d. Sarajevo, broj računa: 1990 4900 5848 7943, IBAN BA39 1990490058487943, SWIFT (BIC) ABSBBA22. Troškove bankovnih naknada preuzima roditelj/staratelj. Plaćanje obaveza vrši se najkasnije do 5. u tekućem mjesecu. Cijene se odnose na cjelodnevni program. Upisnina se ne naplaćuje za djecu koja direktno prelaze iz IMH predškolske grupe u IDSS predškolsku grupu, a već uplaćeni depozit se prenosi i priznaje (Pravilnik o cijenama, čl. 1). Treće i svako naredno dijete iz iste porodice u IMH oslobođeno je školarine, upisnine, depozita i participacije za vrijeme istovremenog pohađanja (čl. 4).
       </div>
     </div>
   </section>
@@ -906,9 +906,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
       <h4>Subvencije (fiksni iznosi)</h4>
       <div class="price-edit-grid">
         <div class="form-group"><label>Čl. 6 — cjelodnevni</label><input type="number" id="cfg-cl6-cjelo" value="235" oninput="izracunaj()" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Čl. 6 — poludnevni</label><input type="number" id="cfg-cl6-pola" value="120" oninput="izracunaj()" onchange="izracunaj()"></div>
         <div class="form-group"><label>Čl. 7 — cjelodnevni</label><input type="number" id="cfg-cl7-cjelo" value="300" oninput="izracunaj()" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Čl. 7 — poludnevni</label><input type="number" id="cfg-cl7-pola" value="150" oninput="izracunaj()" onchange="izracunaj()"></div>
       </div>
 
       <div class="btn-group">
@@ -946,7 +944,9 @@ const ONETIME = {
   idss: { upis: { domace: 500, strano: 1000 }, part: { domace: 300, strano: 300 },
           depozit: { domace: { prvo: 750, naredno: 600 }, strano: { prvo: 850, naredno: 680 } } }
 };
-const DEFAULT_SUB = { cl6: { cjelo: 235, pola: 120 }, cl7: { cjelo: 300, pola: 150 } };
+// Program (Sl. novine KS 16/26): 235 KM (redovno) i 300 KM (porodice 3+, dvoje u vrtiću) za cjelodnevni boravak.
+// Poludnevni iznosi (120/150 KM) se ne obračunavaju jer IMH nema cijenu poludnevnog boravka.
+const DEFAULT_SUB = { cl6: { cjelo: 235 }, cl7: { cjelo: 300 } };
 
 const STATUS_LABEL = {
   imh: "IMH vrtić (Toddler / Predškolska)",
@@ -996,8 +996,8 @@ function getPrices() {
 }
 function getSub() {
   return {
-    cl6: { cjelo: broj(document.getElementById("cfg-cl6-cjelo"), DEFAULT_SUB.cl6.cjelo), pola: broj(document.getElementById("cfg-cl6-pola"), DEFAULT_SUB.cl6.pola) },
-    cl7: { cjelo: broj(document.getElementById("cfg-cl7-cjelo"), DEFAULT_SUB.cl7.cjelo), pola: broj(document.getElementById("cfg-cl7-pola"), DEFAULT_SUB.cl7.pola) }
+    cl6: { cjelo: broj(document.getElementById("cfg-cl6-cjelo"), DEFAULT_SUB.cl6.cjelo) },
+    cl7: { cjelo: broj(document.getElementById("cfg-cl7-cjelo"), DEFAULT_SUB.cl7.cjelo) }
   };
 }
 
@@ -1029,24 +1029,12 @@ function renderDijete(d, i) {
   }
   html += "</select></div>";
 
-  // Tip boravka (samo za PPU)
-  if (jePpu) {
-    html += '<div class="form-group"><label>Tip boravka</label><select onchange="azuriraj(' + i + ", 'tip', this.value)\">";
-    html += '<option value="cjelodnevni"' + (d.tip === "cjelodnevni" ? " selected" : "") + ">Cjelodnevni</option>";
-    html += '<option value="poludnevni"' + (d.tip === "poludnevni" ? " selected" : "") + ">Poludnevni (uz odobrenje)</option>";
-    html += "</select></div>";
-  }
   html += "</div>"; // child-grid
 
-  // Opcije za PPU djecu
+  // Odricanje od sufinansiranja (Program, Opće napomene t. 9) — samo za PPU
   if (jePpu) {
     html += '<div class="child-actions">';
-    html += '<label class="checkbox-row" style="margin-bottom:8px"><input type="checkbox"' + (d.odricanje ? " checked" : "") + ' onchange="azuriraj(' + i + ", 'odricanje', this.checked)\"><span>Roditelj se <strong>odriče sufinansiranja</strong> za ovo dijete</span></label>";
-    html += '<label class="checkbox-row" style="margin-bottom:8px"><input type="checkbox"' + (d.ispis ? " checked" : "") + ' onchange="azuriraj(' + i + ", 'ispis', this.checked)\"><span><strong>Ispis u toku mjeseca</strong> — subvencija se obračunava proporcionalno danima</span></label>";
-    if (d.ispis) {
-      html += '<div class="form-row"><div class="form-group"><label>Dana pohađanja</label><input type="number" min="0" max="31" value="' + (d.dani != null ? d.dani : 15) + '" onchange="azuriraj(' + i + ", 'dani', this.value)\"></div>";
-      html += '<div class="form-group"><label>Ukupno dana u mjesecu</label><input type="number" min="1" max="31" value="' + (d.ukupnoDana != null ? d.ukupnoDana : 30) + '" onchange="azuriraj(' + i + ", 'ukupnoDana', this.value)\"></div></div>";
-    }
+    html += '<label class="checkbox-row" style="margin-bottom:8px"><input type="checkbox"' + (d.odricanje ? " checked" : "") + ' onchange="azuriraj(' + i + ", 'odricanje', this.checked)\"><span>Roditelj se <strong>odriče sufinansiranja</strong> za ovo dijete (izjava ovjerena kod općinskog organa)</span></label>";
     html += "</div>";
   }
 
@@ -1057,16 +1045,7 @@ function renderDijete(d, i) {
 function azuriraj(index, kljuc, vrijednost) {
   const d = state.djeca[index];
   if (!d) return;
-  if (kljuc === "dani" || kljuc === "ukupnoDana") {
-    d[kljuc] = parseFloat(vrijednost);
-  } else {
-    d[kljuc] = vrijednost;
-  }
-  if (kljuc === "status") {
-    if (PPU_STATUS.includes(vrijednost)) {
-      if (!d.tip) d.tip = "cjelodnevni";
-    }
-  }
+  d[kljuc] = vrijednost;
   renderDjecu();
 }
 
@@ -1076,13 +1055,13 @@ function postaviBroj() {
   if (isNaN(n) || n < 1) n = 1;
   if (n > 12) n = 12;
   input.value = n;
-  while (state.djeca.length < n) state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 });
+  while (state.djeca.length < n) state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false });
   if (state.djeca.length > n) state.djeca = state.djeca.slice(0, n);
   renderDjecu();
 }
 function dodajDijete() {
   if (state.djeca.length >= 12) return;
-  state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 });
+  state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false });
   document.getElementById("brojDjece").value = state.djeca.length;
   renderDjecu();
 }
@@ -1094,9 +1073,9 @@ function ukloniDijete(index) {
 }
 function resetKalkulator() {
   state.djeca = [
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 }
+    { status: "imh", tip: "cjelodnevni", odricanje: false },
+    { status: "imh", tip: "cjelodnevni", odricanje: false },
+    { status: "imh", tip: "cjelodnevni", odricanje: false }
   ];
   document.getElementById("brojDjece").value = 3;
   document.getElementById("august").checked = false;
@@ -1131,7 +1110,7 @@ function izracunaj() {
       index: i, redniPoRodjenju, status: d.status, tip: d.tip,
       obracun: false, skolarina: 0, subvencija: 0, roditeljSkol: 0,
       clan: null, nap: "", popust: false, oslobodjen: false, unsure: false,
-      ispis: !!d.ispis, odricanje: !!d.odricanje,
+      odricanje: !!d.odricanje,
       redniUVrticu: redniUVrticu[i] || null, kandidati: [],
       upis: 0, depozit: 0, participacija: 0, jednokratno: 0
     };
@@ -1155,28 +1134,35 @@ function izracunaj() {
     r.popust = ppuCounter > 1;
     r.oslobodjen = ppuCounter >= 3; // 3.+ dijete oslobođeno školarine (Pravilnik o cijenama, čl. 4)
 
-    // Cijena boravka (školarina) — 1. dijete: prvo; 2.+: naredno (20% popust)
-    let cijena = r.popust ? tab.naredno : tab.prvo;
-    if (d.tip === "poludnevni") cijena = cijena / 2;
-    r.skolarina = cijena;
+    // Cijena boravka po cjenovniku (cjelodnevni program) — 1. dijete: prvo; 2.+: naredno (20% popust)
+    const cijena = r.popust ? tab.naredno : tab.prvo;
+    r.cijenaListe = cijena;
+    // 3.+ dijete iz iste porodice u IMH ne plaća školarinu (Pravilnik o cijenama, čl. 4) — IMH fakturiše 0,00 KM
+    r.skolarina = r.oslobodjen ? 0 : cijena;
 
     // ---- Subvencija ----
     const jeStrano = state.lice === "strano";
-    if (d.odricanje) {
+    if (r.oslobodjen) {
+      // Školarinu ne naplaćuje IMH (čl. 4 Pravilnika o cijenama); da li i koliko Ministarstvo sufinansira
+      // dijete za koje se ništa ne naplaćuje utvrđuje Ministarstvo (čl. 10 Pravilnika o primjeni Programa).
+      r.clan = "—"; r.subvencija = 0;
+      r.osnov = "Kategoriju i iznos određuje Ministarstvo (čl. 10)";
+      r.nap = "Treće/naredno dijete u IMH — školarinu ne naplaćuje IMH (čl. 4 Pravilnika o cijenama). Sufinansiranje za ovo dijete određuje Ministarstvo (čl. 10); kalkulator ga ne uračunava.";
+    } else if (d.odricanje) {
       r.clan = "—"; r.subvencija = 0; r.nap = "Roditelj se odrekao sufinansiranja";
     } else if (jeStrano) {
       r.clan = "—"; r.subvencija = 0; r.nap = "Strano lice — nema pravo na sufinansiranje";
     } else {
       const cands = [];
       if (N < 3) {
-        cands.push({ clan: "6", iznos: d.tip === "poludnevni" ? sub.cl6.pola : sub.cl6.cjelo, osnov: "Porodica sa manje od troje djece" });
+        cands.push({ clan: "6", iznos: sub.cl6.cjelo, osnov: "Porodica sa manje od troje djece" });
       } else {
         if (M >= 2) {
-          if (r.redniUVrticu <= 2) cands.push({ clan: "7", iznos: d.tip === "poludnevni" ? sub.cl7.pola : sub.cl7.cjelo, osnov: "Prvo/drugo dijete u vrtiću (dvoje ili više pohađa)" });
+          if (r.redniUVrticu <= 2) cands.push({ clan: "7", iznos: sub.cl7.cjelo, osnov: "Prvo/drugo dijete u vrtiću (dvoje ili više pohađa)" });
           else cands.push({ clan: "8", iznos: cijena, osnov: "Treće i naredno dijete u vrtiću — besplatan boravak" });
         }
         if (redniPoRodjenju >= 3) cands.push({ clan: "9", iznos: cijena * 0.8, osnov: "Treće i naredno dijete po rođenju — 80 % cijene" });
-        if (cands.length === 0) cands.push({ clan: "6", iznos: d.tip === "poludnevni" ? sub.cl6.pola : sub.cl6.cjelo, osnov: "Redovno — Program nije izričit za ovaj slučaj", unsure: true });
+        if (cands.length === 0) cands.push({ clan: "6", iznos: sub.cl6.cjelo, osnov: "Redovno — Program nije izričit za ovaj slučaj", unsure: true });
       }
       cands.forEach(x => { if (x.iznos > cijena) x.iznos = cijena; });
       cands.sort((a, b) => b.iznos - a.iznos);
@@ -1186,30 +1172,19 @@ function izracunaj() {
       r.osnov = best.osnov;
       r.subvencija = best.iznos;
       r.unsure = !!best.unsure || cands.length > 1;
-      if (r.oslobodjen) r.nap = "Treće/naredno dijete u IMH — oslobođeno školarine (čl. 4 Pravilnika o cijenama)";
     }
 
     // August −50%
     if (state.august) r.subvencija = r.subvencija * 0.5;
-
-    // Ispis — proporcionalno danima
-    if (d.ispis) {
-      const dani = (d.dani != null ? d.dani : 15);
-      const ukupno = (d.ukupnoDana != null && d.ukupnoDana > 0) ? d.ukupnoDana : 30;
-      const faktor = Math.max(0, Math.min(1, dani / ukupno));
-      r.subvencija = r.subvencija * faktor;
-      r.nap = (r.nap ? r.nap + " · " : "") + "Ispis: subvencija proporcionalno (" + dani + "/" + ukupno + " dana)";
-    }
 
     r.roditeljSkol = r.skolarina - r.subvencija;
 
     // ---- Jednokratni troškovi ----
     const ot = ONETIME[ent];
     const osl = r.oslobodjen;
-    let upis = osl ? 0 : ot.upis[state.lice];
-    let part = osl ? 0 : ot.part[state.lice];
-    let dep = osl ? 0 : (r.popust ? ot.depozit[state.lice].naredno : ot.depozit[state.lice].prvo);
-    if (d.tip === "poludnevni") { upis = upis / 2; part = part / 2; dep = dep / 2; }
+    const upis = osl ? 0 : ot.upis[state.lice];
+    const part = osl ? 0 : ot.part[state.lice];
+    const dep = osl ? 0 : (r.popust ? ot.depozit[state.lice].naredno : ot.depozit[state.lice].prvo);
     r.upis = upis; r.participacija = part; r.depozit = dep;
     r.jednokratno = upis + part + dep;
 
@@ -1258,7 +1233,7 @@ function renderRezultat(rezultati, t) {
   const ps = document.getElementById("printScenario");
   if (ps) {
     const liceTxt = state.lice === "strano" ? "Strano lice" : "Domaće lice (BiH, KS)";
-    const kids = rezultati.map(r => r.redniPoRodjenju + ") " + STATUS_LABEL[r.status] + (r.obracun ? " — " + (r.tip === "poludnevni" ? "poludnevni" : "cjelodnevni") : "")).join("  ·  ");
+    const kids = rezultati.map(r => r.redniPoRodjenju + ") " + STATUS_LABEL[r.status] + (r.obracun ? " — cjelodnevni" : "")).join("  ·  ");
     ps.innerHTML = '<div class="print-scenario"><div class="ps-title">Scenario obračuna (aktuelno stanje)</div>' +
       '<div class="ps-line"><b>Status lica:</b> ' + liceTxt + ' · <b>Ukupno djece:</b> ' + rezultati.length + (state.august ? ' · <b>August:</b> subvencija −50 %' : '') + '</div>' +
       '<div class="ps-line"><b>Djeca:</b> ' + kids + '</div></div>';
@@ -1284,12 +1259,12 @@ function renderRezultat(rezultati, t) {
 
     // Zaglavlje kartice
     html += '<div class="ob-head"><span class="ob-num">' + r.redniPoRodjenju + '</span>';
-    html += '<span class="ob-ttl">' + STATUS_LABEL[r.status] + '<small>' + (r.tip === "poludnevni" ? "Poludnevni boravak · ½ cijene" : "Cjelodnevni boravak") + '</small></span>';
+    html += '<span class="ob-ttl">' + STATUS_LABEL[r.status] + '<small>Cjelodnevni boravak</small></span>';
     html += '<span class="ob-tags">';
     if (r.popust) html += '<span class="tag tag-clan" title="20 % popust na školarinu za naredno dijete (čl. 4 Pravilnika o cijenama)">naredno dijete −20 %</span>';
     if (r.oslobodjen) html += '<span class="tag tag-osl" title="Treće i svako naredno dijete iz iste porodice oslobođeno je školarine, upisnine, depozita i participacije (čl. 4 Pravilnika o cijenama)">3.+ dijete — oslobođeno</span>';
     const tagClan = r.clan === "—" ? "tag-skip" : "tag-clan";
-    const tagText = r.clan === "—" ? "bez subvencije" : "Subvencija čl. " + r.clan;
+    const tagText = r.oslobodjen ? "subvenciju određuje Ministarstvo" : (r.clan === "—" ? "bez subvencije" : "Subvencija čl. " + r.clan);
     html += '<span class="tag ' + tagClan + '" title="' + (r.osnov || "") + '">' + tagText + '</span>';
     html += '</span></div>';
 
@@ -1297,7 +1272,7 @@ function renderRezultat(rezultati, t) {
     html += '<div class="ob-body">';
 
     html += '<div class="ob-group mj"><div class="ob-ghead"><span class="dot"></span>Mjesečno · školarina (čl. 2)</div>';
-    html += '<div class="ob-line"><span class="lbl">Školarina (puna cijena)</span><span class="amt">' + fmt(r.skolarina) + '</span></div>';
+    html += '<div class="ob-line"><span class="lbl">' + (r.oslobodjen ? "Školarina (IMH ne naplaćuje)" : "Školarina (puna cijena)") + '</span><span class="amt">' + fmt(r.skolarina) + '</span></div>';
     html += '<div class="ob-line"><span class="lbl">Subvencija Ministarstva</span><span class="amt neg">' + (r.subvencija > 0 ? "− " + fmt(r.subvencija) : "0,00 KM") + '</span></div>';
     html += '<div class="ob-line total"><span class="lbl">Roditelj plaća</span><span class="amt' + (free ? " free" : "") + '">' + (free ? "BESPLATNO" : fmt(r.roditeljSkol)) + '</span></div>';
     html += '</div>';
@@ -1327,19 +1302,14 @@ function renderRezultat(rezultati, t) {
   html += '</div>'; // ob-grid
 
   // ---------- UPOZORENJA ZA RUBNE SLUČAJEVE ----------
-  const nepokriveno = rezultati.filter(r => r.obracun && r.oslobodjen && r.clan === "—");
-  if (nepokriveno.length) {
-    html += '<div class="result-alert warn" style="margin-top:14px"><span class="ico" aria-hidden="true">⚠️</span><span><strong>Čl. 4 Pravilnika o cijenama:</strong> 3.+ dijete u IMH oslobođeno je plaćanja školarine i jednokratnih troškova, ali za ' + nepokriveno.length + ' ' + (nepokriveno.length === 1 ? "dijete" : "djece") + ' nema subvencije koja bi pokrila taj iznos (strano lice ili odricanje). Da vrtić ne bi bio oštećen, provjerite primjenu oslobađanja s Upravnim odborom.</span></div>';
+  const imaOsl = rezultati.filter(r => r.obracun && r.oslobodjen);
+  if (imaOsl.length) {
+    html += '<div class="result-alert info" style="margin-top:14px"><span class="ico" aria-hidden="true">🎁</span><span><strong>Čl. 4 Pravilnika o cijenama:</strong> za ' + imaOsl.length + ' ' + (imaOsl.length === 1 ? "dijete" : "djece") + ' (treće i svako naredno iz iste porodice u IMH) IMH ne fakturiše školarinu, upisninu, depozit ni participaciju. Da li i koliko Ministarstvo sufinansira takvo dijete utvrđuje Ministarstvo (čl. 10 Pravilnika o primjeni Programa) — taj iznos nije uračunat.</span></div>';
   }
   const imaUnsure = rezultati.some(r => r.obracun && r.unsure);
   if (imaUnsure) {
     html += '<div class="result-alert info" style="margin-top:14px"><span class="ico" aria-hidden="true">⚖️</span><span><strong>Čl. 10:</strong> za pojedinu djecu ispunjeno je više osnova za sufinansiranje. Prikazan je najpovoljniji iznos, a konačnu kategoriju i iznos utvrđuje <strong>Ministarstvo</strong> na osnovu EMIS-predškolsko. Vrtić roditelju vraća tačno onaj iznos koji Ministarstvo isplati.</span></div>';
   }
-  const imaIspis = rezultati.some(r => r.obracun && r.ispis);
-  if (imaIspis) {
-    html += '<div class="result-alert info" style="margin-top:14px"><span class="ico" aria-hidden="true">📉</span><span><strong>Ispis (čl. 7 Pravilnika o cijenama):</strong> mjesečna školarina naplaćuje se u punom iznosu bez obzira na datum posljednjeg boravka u tom mjesecu; subvencija Ministarstva obračunava se proporcionalno danima pohađanja. Ako je jedno dijete ispisano, školarina za preostalo dijete iz iste porodice vraća se na puni iznos (prvo dijete) od narednog mjeseca, a uplaćeni depozit se zadržava.</span></div>';
-  }
-
   // ---------- REKAPITULACIJA ----------
   const sum = f => rezultati.reduce((a, r) => a + (r.obracun ? f(r) : 0), 0);
   const totalUpis = sum(r => r.upis), totalDep = sum(r => r.depozit), totalPart = sum(r => r.participacija);
@@ -1350,7 +1320,7 @@ function renderRezultat(rezultati, t) {
   html += '<div class="summary-row"><span>Subvencija Ministarstva<span class="summary-sub">mjesečno · isplaćuje se vrtiću, a vrtić je refundira roditelju</span></span><span class="val green">− ' + fmt(t.totalSub) + '</span></div>';
   html += '<div class="summary-row"><span>Roditelj plaća školarinu<span class="summary-sub">mjesečno (školarina − subvencija)</span></span><span class="val orange">' + fmt(t.totalRodSkol) + '</span></div>';
   html += '<div class="summary-row"><span>Upisnina<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalUpis) + '</span></div>';
-  html += '<div class="summary-row"><span>Depozit<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalDep) + '</span></div>';
+  html += '<div class="summary-row"><span>Depozit<span class="summary-sub">jednokratno pri upisu · sredstvo osiguranja plaćanja školarine (povrat po čl. 1 Pravilnika o cijenama) · ne subvencioniše se</span></span><span class="val">' + fmt(totalDep) + '</span></div>';
   html += '<div class="summary-row"><span>Potrošni materijal (participacija)<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalPart) + '</span></div>';
   html += '<div class="summary-row"><span>Ukupno jednokratno<span class="summary-sub">upisnina + depozit + potrošni materijal</span></span><span class="val">' + fmt(t.totalJednokratno) + '</span></div>';
   html += '<div class="summary-row total"><span>💳 Vrtić ukupno fakturiše (mjesečno + jednokratno)</span><span class="val">' + fmt(imhUkupno) + '</span></div>';
@@ -1415,7 +1385,7 @@ function resetCijene() {
   const defaults = {
     "cfg-imh-domace-prvo": 710, "cfg-imh-domace-naredno": 570, "cfg-imh-strano-prvo": 810, "cfg-imh-strano-naredno": 650,
     "cfg-idss-domace-prvo": 750, "cfg-idss-domace-naredno": 600, "cfg-idss-strano-prvo": 850, "cfg-idss-strano-naredno": 680,
-    "cfg-cl6-cjelo": 235, "cfg-cl6-pola": 120, "cfg-cl7-cjelo": 300, "cfg-cl7-pola": 150
+    "cfg-cl6-cjelo": 235, "cfg-cl7-cjelo": 300
   };
   for (const id in defaults) { const el = document.getElementById(id); if (el) el.value = defaults[id]; }
   izracunaj();
@@ -1438,7 +1408,7 @@ const DOKUMENTI = [
   { naziv: "Zakon o predškolskom odgoju i obrazovanju u KS (26/08)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_sn_ks_26_08.pdf", ico: "⚖️" },
   { naziv: "Zakon o izmjenama i dopunama (33/21)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjenama_i_dopunama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_snks_br_33_21.pdf", ico: "⚖️" },
   { naziv: "Zakon o izmjenama i dopunama (21/09)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjenama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_sn_ks_21_09.pdf", ico: "⚖️" },
-  { naziv: "Zakon o izmjeni i dopunama", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjeni_i_dopunama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo.pdf", ico: "⚖️" },
+  { naziv: "Zakon o izmjeni i dopunama (31/22)", opis: "„Službene novine KS“, broj 31, 4. 8. 2022. · PDF", fajl: "zakon_o_izmjeni_i_dopunama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo.pdf", ico: "⚖️" },
   { naziv: "Izmjena Instrukcije o upisu djece (2026/27)", opis: "Ministarstvo za odgoj i obrazovanje KS · PDF", fajl: "S36BW-0i26051110270.pdf", ico: "📄" }
 ];
 
@@ -1475,9 +1445,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("datum").textContent = d.getDate() + ". " + mjeseci[d.getMonth()] + " " + d.getFullYear() + ".";
 
   state.djeca = [
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
-    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 }
+    { status: "imh", tip: "cjelodnevni", odricanje: false },
+    { status: "imh", tip: "cjelodnevni", odricanje: false },
+    { status: "imh", tip: "cjelodnevni", odricanje: false }
   ];
   document.getElementById("brojDjece").value = 3;
   renderDokumenti();
