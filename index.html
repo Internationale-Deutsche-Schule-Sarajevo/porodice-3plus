@@ -2,1170 +2,489 @@
 <html lang="bs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMH — Subvencije za porodice 3+ | Kanton Sarajevo 2026/2027</title>
-<link rel="icon" type="image/x-icon" href="https://www.montessorihouse.ba/favicon.ico">
-<link rel="shortcut icon" href="https://www.montessorihouse.ba/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Interaktivni kalkulator i vodič kroz Program sufinansiranja boravka djece predškolske dobi u privatnim predškolskim ustanovama Kantona Sarajevo za porodice sa troje i više djece — školska 2026/2027.">
+<title>Sufinansiranje za porodice 3+ · IMH Sarajevo · 2026/2027</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2547'/%3E%3Ctext x='32' y='44' font-family='Arial,Helvetica,sans-serif' font-size='27' font-weight='700' fill='%23d4a017' text-anchor='middle'%3EIMH%3C/text%3E%3C/svg%3E">
 <style>
 /* ============================================================
-   RESET & VARIJABLE
+   DIZAJN SISTEM
    ============================================================ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-    --navy:        #0f2a44;
-    --navy-2:      #1a3a5c;
-    --navy-3:      #2a5580;
-    --gold:        #c9a24a;
-    --gold-2:      #e0bd68;
-    --gold-soft:   #fdf6e3;
-    --bg:          #f4f6fa;
-    --surface:     #ffffff;
-    --border:      #e3e8ef;
-    --border-2:    #cbd5e1;
-    --text:        #1a2433;
-    --text-2:      #4a5568;
-    --text-muted:  #8492a6;
-    --success:     #15803d;
-    --success-bg:  #dcfce7;
-    --success-br:  #86efac;
-    --warning:     #b45309;
-    --warning-bg:  #fef3c7;
-    --warning-br:  #fcd34d;
-    --danger:      #b91c1c;
-    --danger-bg:   #fee2e2;
-    --info:        #1e40af;
-    --info-bg:     #dbeafe;
-    --info-br:     #93c5fd;
-    --shadow-sm:   0 1px 3px rgba(15, 42, 68, 0.06);
-    --shadow:      0 4px 16px rgba(15, 42, 68, 0.08);
-    --shadow-lg:   0 12px 32px rgba(15, 42, 68, 0.12);
-    --r-sm:        8px;
-    --r:           14px;
-    --r-lg:        20px;
+:root{
+  --navy-900:#0b1b33;
+  --navy-800:#0f2547;
+  --navy-700:#16325c;
+  --navy-600:#1e4275;
+  --blue-500:#2563eb;
+  --blue-400:#3b82f6;
+  --blue-100:#dbeafe;
+  --blue-50:#eff6ff;
+  --gold-600:#b8860b;
+  --gold-500:#d4a017;
+  --gold-400:#e6b422;
+  --gold-100:#fdf3d3;
+  --green-600:#0f7b46;
+  --green-500:#16a34a;
+  --green-100:#dcfce7;
+  --green-50:#f0fdf4;
+  --red-600:#b91c1c;
+  --red-500:#dc2626;
+  --red-100:#fee2e2;
+  --amber-600:#b45309;
+  --amber-500:#d97706;
+  --amber-100:#fef3c7;
+  --ink-900:#0f172a;
+  --ink-700:#334155;
+  --ink-500:#64748b;
+  --ink-400:#94a3b8;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --radius-lg:18px;
+  --radius:13px;
+  --radius-sm:9px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.05);
+  --shadow:0 4px 14px rgba(15,23,42,.07),0 1px 3px rgba(15,23,42,.05);
+  --shadow-lg:0 18px 48px rgba(15,23,42,.14),0 4px 12px rgba(15,23,42,.08);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  --pad:clamp(16px,2.2vw,44px);
 }
-
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--text);
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--ink-900);
+  background:var(--bg);
+  line-height:1.55;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
+h1,h2,h3,h4{margin:0;line-height:1.22;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
+p{margin:0 0 12px}
+a{color:var(--blue-500);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--blue-400);outline-offset:2px;border-radius:6px}
+
+/* Layout — full width, margin to margin on desktop */
+.wrap{width:100%;padding-inline:var(--pad);margin-inline:auto}
+.section{margin-top:clamp(30px,3.4vw,60px)}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.section-head .icon{
+  display:grid;place-items:center;width:46px;height:46px;flex:none;
+  border-radius:12px;background:linear-gradient(135deg,var(--navy-700),var(--navy-600));
+  color:#fff;font-size:22px;box-shadow:var(--shadow-sm)
+}
+.section-head h2{font-size:clamp(20px,2.1vw,30px)}
+.section-head .sub{color:var(--ink-500);font-size:14px;font-weight:500}
 
 /* ============================================================
-   LAYOUT
+   TOP BAR
    ============================================================ */
-.wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+.top-bar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(11,27,51,.94);
+  backdrop-filter:saturate(160%) blur(10px);
+  -webkit-backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  color:#fff;
 }
-
-.section { margin-bottom: 40px; }
-
-.section-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 3px solid var(--gold);
+.top-bar .wrap{display:flex;align-items:center;gap:18px;min-height:62px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.2px}
+.brand-logo{width:34px;height:34px;flex:none;border-radius:9px;background:linear-gradient(135deg,var(--gold-500),var(--gold-600));display:grid;place-items:center;color:var(--navy-900);font-weight:900;font-size:15px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.brand-text{display:flex;flex-direction:column;line-height:1.12}
+.brand-name{font-size:14.5px}
+.brand-loc{font-size:11px;color:#9fb4d4;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.top-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.top-nav a{
+  color:#c8d6ee;font-size:13.5px;font-weight:600;padding:8px 13px;border-radius:9px;
+  text-decoration:none;transition:background .15s,color .15s;white-space:nowrap
 }
-
-.section-head h2 {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.02em;
-}
-
-.section-head .icon {
-    font-size: 24px;
-    line-height: 1;
-}
-
-/* ============================================================
-   HEADER
-   ============================================================ */
-.top-bar {
-    background: var(--navy);
-    color: #fff;
-    padding: 14px 0;
-    border-bottom: 3px solid var(--gold);
-}
-
-.top-bar .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.brand-logo {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: #fff;
-    padding: 5px;
-    object-fit: contain;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.brand-name {
-    font-weight: 800;
-    font-size: 15px;
-    letter-spacing: -0.01em;
-}
-
-.brand-loc {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold-2);
-    font-weight: 600;
-}
-
-.top-nav {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.top-nav a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 13px;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: all .2s;
-    font-weight: 500;
-}
-
-.top-nav a:hover {
-    background: rgba(255,255,255,0.12);
-    color: #fff;
+.top-nav a:hover{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+@media(max-width:760px){
+  .top-bar .wrap{min-height:auto;padding-block:9px;gap:8px}
+  .top-nav{margin-left:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:3px}
+  .top-nav a{padding:7px 11px;font-size:12.5px}
 }
 
 /* ============================================================
    HERO
    ============================================================ */
-.hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
-    color: #fff;
-    padding: 48px 0 96px;
-    position: relative;
-    overflow: hidden;
+.hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(1200px 480px at 82% -18%,rgba(212,160,23,.30),transparent 60%),
+    radial-gradient(900px 420px at 8% 120%,rgba(37,99,235,.30),transparent 60%),
+    linear-gradient(140deg,var(--navy-900),var(--navy-700) 60%,var(--navy-800));
 }
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,162,74,0.18) 0%, transparent 70%);
+.hero::after{
+  content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent)
 }
-
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: var(--bg);
-    border-radius: 50px 50px 0 0;
-}
-
-.hero .wrap { position: relative; z-index: 2; }
-
-.hero h1 {
-    font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    margin-bottom: 8px;
-}
-
-.hero-sub {
-    font-size: 16px;
-    opacity: 0.85;
-    max-width: 680px;
-    font-weight: 400;
-}
-
-.hero-badges {
-    margin-top: 18px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(201,162,74,0.2);
-    border: 1px solid rgba(201,162,74,0.4);
-    color: var(--gold-2);
-    padding: 5px 12px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(34px,5vw,72px)}
+.hero h1{color:#fff;font-size:clamp(28px,4.4vw,58px);letter-spacing:-.02em;max-width:20ch}
+.hero-sub{margin-top:16px;max-width:76ch;color:#c8d6ee;font-size:clamp(15px,1.35vw,19px);font-weight:450}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+  font-size:13px;font-weight:600;color:#eaf1fb;backdrop-filter:blur(4px)
 }
 
 /* ============================================================
-   KARTICE
+   CARDS
    ============================================================ */
-.card {
-    background: var(--surface);
-    border-radius: var(--r);
-    box-shadow: var(--shadow);
-    padding: 26px;
-    border: 1px solid var(--border);
-    transition: box-shadow .25s ease, transform .25s ease;
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);padding:clamp(18px,1.7vw,30px)
 }
-
-.card:hover { box-shadow: var(--shadow-lg); }
-
-.card-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--navy);
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
-}
-
-.card-desc {
-    font-size: 13.5px;
-    color: var(--text-2);
-    margin-bottom: 18px;
-    line-height: 1.6;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-}
-
-.grid-2-asym {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 22px;
-}
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-@media (max-width: 960px) {
-    .grid-2, .grid-2-asym, .grid-3 { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 26px; }
-    .top-nav { display: none; }
-}
+.card-title{font-size:16.5px;font-weight:800;color:var(--navy-900);display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.card-desc{color:var(--ink-500);font-size:13.5px;margin-bottom:16px;line-height:1.5}
+.intro-card{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;margin-top:26px}
+.intro-icon{font-size:40px;line-height:1}
+.intro-text h2{font-size:clamp(18px,1.8vw,24px);margin-bottom:6px}
+.intro-text p{margin:0;color:var(--ink-700);font-size:14.5px}
+@media(max-width:820px){.intro-card{grid-template-columns:1fr}.intro-icon{font-size:32px}}
 
 /* ============================================================
-   INTRO KARTICA
+   GUIDE (Uputstvo)
    ============================================================ */
-.intro-card {
-    margin-top: -60px;
-    position: relative;
-    z-index: 3;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 22px;
-    align-items: center;
-    padding: 24px 28px;
-    border-left: 5px solid var(--gold);
-}
-
-.intro-icon {
-    font-size: 36px;
-    line-height: 1;
-}
-
-.intro-text h2 {
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--navy);
-    margin-bottom: 4px;
-}
-
-.intro-text p {
-    font-size: 14px;
-    color: var(--text-2);
-    line-height: 1.6;
-}
-
-@media (max-width: 800px) {
-    .intro-card {
-        grid-template-columns: 1fr;
-        text-align: left;
-    }
-}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:clamp(16px,1.5vw,24px);position:relative;overflow:hidden}
+.step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-500),var(--gold-600))}
+.step-num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--navy-700),var(--navy-600));color:#fff;font-weight:900;font-size:16px;margin-bottom:12px}
+.step h3{font-size:15.5px;margin-bottom:7px}
+.step p{margin:0;color:var(--ink-700);font-size:13.5px}
+.persp-legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.persp-legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:999px;border:1px solid var(--line)}
+.persp-legend .dot{width:9px;height:9px;border-radius:50%}
 
 /* ============================================================
-   FORME
+   GRIDS
    ============================================================ */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-}
-
-.form-group { margin-bottom: 14px; }
-
-.form-group label {
-    display: block;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--text-2);
-    margin-bottom: 6px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group select {
-    width: 100%;
-    padding: 10px 13px;
-    font-size: 14.5px;
-    font-family: inherit;
-    color: var(--text);
-    background: #fff;
-    border: 2px solid var(--border);
-    border-radius: var(--r-sm);
-    transition: all .18s ease;
-    -moz-appearance: textfield;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--navy-3);
-    box-shadow: 0 0 0 3px rgba(42, 85, 128, 0.12);
-}
-
-.form-group input[type="number"]::-webkit-outer-spin-button,
-.form-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+.grid-calc{display:grid;grid-template-columns:minmax(340px,1fr) minmax(420px,1.35fr);gap:clamp(16px,1.6vw,26px);align-items:start}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,1.6vw,26px)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,22px)}
+@media(max-width:1080px){.grid-calc{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+@media(max-width:880px){.grid-2{grid-template-columns:1fr}}
 
 /* ============================================================
-   DIJETE — KARTICA
+   FORMS
    ============================================================ */
-.child-card {
-    background: #f8fafc;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r-sm);
-    padding: 14px;
-    margin-bottom: 10px;
-    transition: all .18s;
-    position: relative;
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-700);margin-bottom:6px;letter-spacing:.01em}
+select,input[type=number],input[type=text],input[type=date]{
+  width:100%;padding:11px 13px;border:1.5px solid var(--line-strong);border-radius:var(--radius-sm);
+  font-size:14.5px;color:var(--ink-900);background:#fff;transition:border-color .15s,box-shadow .15s;
+  font-family:inherit;-webkit-appearance:none;appearance:none
 }
-
-.child-card:hover {
-    border-color: var(--navy-3);
-    background: #fff;
+select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+select:focus,input:focus{border-color:var(--blue-500);box-shadow:0 0 0 4px var(--blue-100);outline:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.form-row{grid-template-columns:1fr}}
+.checkbox-row{
+  display:flex;align-items:flex-start;gap:11px;padding:12px 14px;border:1.5px solid var(--line);
+  border-radius:var(--radius-sm);background:var(--blue-50);cursor:pointer;font-size:13.5px;color:var(--ink-700);
+  transition:border-color .15s,background .15s;margin-bottom:10px
 }
-
-.child-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.child-num {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    background: var(--gold-soft);
-    border: 1px solid var(--gold-2);
-    padding: 3px 10px;
-    border-radius: 50px;
-}
-
-.child-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-}
-
-.child-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.child-grid .form-group,
-.child-grid-2 .form-group {
-    margin-bottom: 0;
-}
-
-.child-grid .form-group label,
-.child-grid-2 .form-group label {
-    font-size: 10.5px;
-    letter-spacing: 0.05em;
-}
-
-.child-grid select,
-.child-grid-2 select {
-    padding: 8px 10px;
-    font-size: 13px;
-}
-
-.child-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.child-remove {
-    background: transparent;
-    color: var(--danger);
-    border: 1.5px solid var(--danger);
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .15s;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-.child-remove:hover {
-    background: var(--danger);
-    color: #fff;
-}
-
-@media (max-width: 600px) {
-    .child-grid, .child-grid-2 { grid-template-columns: 1fr 1fr; }
-}
+.checkbox-row:hover{border-color:var(--blue-400)}
+.checkbox-row input{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--blue-500);cursor:pointer}
+.checkbox-row span{line-height:1.45}
 
 /* ============================================================
-   CHECKBOX
+   CHILD CARDS
    ============================================================ */
-.checkbox-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 14px;
-    background: #f8fafc;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r-sm);
-    margin-bottom: 12px;
-    cursor: pointer;
-    transition: all .18s;
-    font-size: 13.5px;
+.child-card{
+  border:1.5px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:12px;
+  background:linear-gradient(180deg,#fbfcff,#fff);transition:border-color .15s,box-shadow .15s
 }
-
-.checkbox-row:hover {
-    border-color: var(--navy-3);
-    background: #fff;
+.child-card:hover{border-color:var(--blue-400);box-shadow:var(--shadow-sm)}
+.child-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.child-num{font-size:13px;font-weight:800;color:var(--navy-700);display:flex;align-items:center;gap:8px}
+.child-num::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold-500);box-shadow:0 0 0 3px var(--gold-100)}
+.child-remove{
+  border:1.5px solid var(--line-strong);background:#fff;color:var(--ink-500);width:28px;height:28px;border-radius:8px;
+  cursor:pointer;font-size:13px;line-height:1;display:grid;place-items:center;transition:all .15s
 }
-
-.checkbox-row input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--navy);
-    cursor: pointer;
-    margin-top: 1px;
-    flex-shrink: 0;
-}
-
-.checkbox-row span {
-    color: var(--text-2);
-    line-height: 1.5;
-}
-
-.checkbox-row strong { color: var(--text); }
+.child-remove:hover{border-color:var(--red-500);color:var(--red-500);background:var(--red-100)}
+.child-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.child-grid-1{display:grid;grid-template-columns:1fr;gap:11px}
+.child-grid .form-group,.child-grid-1 .form-group{margin-bottom:0}
+.child-actions{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+.child-actions .checkbox-row{margin-bottom:0;background:var(--amber-100);border-color:#fde68a}
+@media(max-width:520px){.child-grid{grid-template-columns:1fr}}
 
 /* ============================================================
-   DUGMAD
+   BUTTONS
    ============================================================ */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 11px 20px;
-    font-size: 14px;
-    font-weight: 700;
-    font-family: inherit;
-    letter-spacing: 0.01em;
-    border: none;
-    border-radius: var(--r-sm);
-    cursor: pointer;
-    transition: all .18s ease;
-    text-decoration: none;
-    line-height: 1.2;
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 18px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;
+  border:1.5px solid transparent;transition:transform .12s,box-shadow .15s,background .15s,color .15s;
+  text-decoration:none;white-space:nowrap
 }
-
-.btn-primary {
-    background: var(--navy);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: var(--navy-3);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(15, 42, 68, 0.28);
-}
-
-.btn-gold {
-    background: var(--gold);
-    color: var(--navy);
-}
-
-.btn-gold:hover {
-    background: var(--gold-2);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(201, 162, 74, 0.35);
-}
-
-.btn-ghost {
-    background: transparent;
-    color: var(--navy);
-    border: 2px solid var(--navy);
-}
-
-.btn-ghost:hover {
-    background: var(--navy);
-    color: #fff;
-}
-
-.btn-sm { padding: 8px 14px; font-size: 13px; }
-
-.btn-group {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:linear-gradient(135deg,var(--navy-700),var(--navy-600));color:#fff;box-shadow:var(--shadow-sm)}
+.btn-primary:hover{box-shadow:var(--shadow)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--navy-900);box-shadow:var(--shadow-sm)}
+.btn-ghost{background:#fff;border-color:var(--line-strong);color:var(--ink-700)}
+.btn-ghost:hover{border-color:var(--navy-600);color:var(--navy-700)}
+.btn-sm{padding:8px 13px;font-size:13px}
+.btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 
 /* ============================================================
-   REZULTAT
+   TABLES
    ============================================================ */
-.result-empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-muted);
-    font-size: 14px;
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);-webkit-overflow-scrolling:touch}
+table.data{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+table.data th{
+  background:var(--navy-800);color:#dbe6f7;font-weight:700;text-align:left;padding:11px 13px;
+  font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap
 }
-
-.result-empty .icon {
-    font-size: 42px;
-    margin-bottom: 10px;
-    opacity: 0.5;
-    display: block;
-}
-
-.result-alert {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 16px;
-    border-radius: var(--r-sm);
-    font-size: 13.5px;
-    margin-bottom: 16px;
-    line-height: 1.55;
-}
-
-.result-alert.ok { background: var(--success-bg); border: 1px solid var(--success-br); color: var(--success); }
-.result-alert.warn { background: var(--warning-bg); border: 1px solid var(--warning-br); color: var(--warning); }
-.result-alert.info { background: var(--info-bg); border: 1px solid var(--info-br); color: var(--info); }
-.result-alert .ico { font-size: 18px; line-height: 1.2; flex-shrink: 0; }
-
-/* Tabela */
-.tbl-wrap {
-    overflow-x: auto;
-    border-radius: var(--r-sm);
-    border: 1px solid var(--border);
-    margin-bottom: 16px;
-}
-
-table.data {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-}
-
-table.data thead {
-    background: var(--navy);
-    color: #fff;
-}
-
-table.data thead th {
-    padding: 10px 12px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-table.data tbody td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-}
-
-table.data tbody tr:last-child td { border-bottom: none; }
-table.data tbody tr:hover { background: #f8fafc; }
-
-table.data tbody tr.skip-row { opacity: 0.55; }
-
-.money-pos {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-weight: 700;
-    color: var(--success);
-    white-space: nowrap;
-}
-
-.money-neg {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-weight: 700;
-    color: var(--warning);
-    white-space: nowrap;
-}
-
-.money-neutral {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-}
-
-.tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 50px;
-    font-size: 10.5px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.tag-free    { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-br); }
-.tag-paid    { background: var(--warning-bg); color: var(--warning); border: 1px solid var(--warning-br); }
-.tag-clan    { background: var(--info-bg); color: var(--info); border: 1px solid var(--info-br); }
-.tag-skip    { background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border-2); }
-
-/* Sumarni panel */
-.summary {
-    background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fc 100%);
-    border: 2px solid #bae0fd;
-    border-radius: var(--r);
-    padding: 18px 20px;
-}
-
-.summary h4 {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-}
-
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    font-size: 14px;
-    color: var(--text-2);
-    border-bottom: 1px dashed #cbe3f7;
-}
-
-.summary-row:last-child { border-bottom: none; }
-
-.summary-row.total {
-    padding-top: 14px;
-    margin-top: 6px;
-    border-top: 2px solid #bae0fd;
-    border-bottom: none;
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--navy);
-}
-
-.summary-row .val {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-weight: 700;
-    color: var(--navy);
-}
-
-.summary-row .val.green { color: var(--success); }
-.summary-row .val.orange { color: var(--warning); font-size: 18px; }
+table.data td{padding:11px 13px;border-top:1px solid var(--line);vertical-align:middle}
+table.data tbody tr:nth-child(even){background:#fafbfe}
+table.data tbody tr:hover{background:var(--blue-50)}
+table.data .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.data .money-neutral{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink-700)}
+table.data .money-pos{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--green-600)}
+table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--amber-600)}
+.skip-row td{color:var(--ink-400);font-style:italic}
 
 /* ============================================================
-   FLOW DIJAGRAM
+   TAGS / BADGES
    ============================================================ */
-.flow {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-    gap: 6px;
-    align-items: stretch;
-    margin-top: 20px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-}
-
-.flow-step {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    border: 2px solid var(--border);
-    border-radius: var(--r);
-    padding: 18px 12px;
-    text-align: center;
-    min-width: 155px;
-    transition: all .3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    position: relative;
-}
-
-.flow-step.active {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(201, 162, 74, 0.15), var(--shadow);
-    background: linear-gradient(180deg, #fffdf5 0%, #fff9e6 100%);
-}
-
-.flow-step .ico {
-    font-size: 30px;
-    line-height: 1;
-    margin-bottom: 2px;
-}
-
-.flow-step .lbl {
-    font-size: 10.5px;
-    font-weight: 800;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.flow-step .amt {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--gold);
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-}
-
-.flow-step .amt.blue { color: var(--navy); }
-.flow-step .amt.green { color: var(--success); }
-
-.flow-step .sub {
-    font-size: 10.5px;
-    color: var(--text-muted);
-    line-height: 1.3;
-}
-
-.flow-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    font-size: 22px;
-    font-weight: 800;
-    min-width: 28px;
-    position: relative;
-}
-
-.flow-arrow::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
-    z-index: -1;
-}
-
-.flow-result {
-    margin-top: 20px;
-    padding: 16px 20px;
-    background: linear-gradient(135deg, #fef9e7 0%, #fdf3d0 100%);
-    border: 2px solid var(--gold-2);
-    border-radius: var(--r);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.flow-result .lbl {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--warning);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
-
-.flow-result .amt {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.02em;
-}
-
-@media (max-width: 900px) {
-    .flow {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-    .flow-arrow {
-        transform: rotate(90deg);
-        min-height: 24px;
-    }
-    .flow-step { min-width: 100%; }
-}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.5}
+.tag-clan{background:var(--blue-100);color:var(--navy-700)}
+.tag-skip{background:#f1f5f9;color:var(--ink-500);font-style:normal}
+.tag-free{background:var(--green-100);color:var(--green-600)}
+.tag-paid{background:var(--amber-100);color:var(--amber-600)}
+.tag-unsure{background:#ede9fe;color:#6d28d9}
+.tag-osl{background:#e0f2fe;color:#0369a1}
 
 /* ============================================================
-   PRAVNI OKVIR
+   ALERTS
    ============================================================ */
-.legal-item {
-    padding: 14px 16px;
-    background: #f8fafc;
-    border-left: 4px solid var(--gold);
-    border-radius: 0 var(--r-sm) var(--r-sm) 0;
-    margin-bottom: 10px;
-    transition: all .18s;
-}
-
-.legal-item:hover {
-    background: var(--gold-soft);
-    transform: translateX(2px);
-}
-
-.legal-item .ref {
-    font-size: 10.5px;
-    font-weight: 800;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 3px;
-}
-
-.legal-item .txt {
-    font-size: 13.5px;
-    color: var(--text);
-    line-height: 1.55;
-}
-
-.legal-item .txt strong { color: var(--navy); font-weight: 800; }
+.result-alert{display:flex;gap:11px;padding:12px 15px;border-radius:var(--radius-sm);font-size:13.5px;line-height:1.5;margin-bottom:14px;border:1px solid transparent}
+.result-alert .ico{flex:none;font-size:17px;line-height:1.35}
+.result-alert.info{background:var(--blue-50);border-color:var(--blue-100);color:var(--navy-700)}
+.result-alert.ok{background:var(--green-50);border-color:var(--green-100);color:var(--green-600)}
+.result-alert.warn{background:var(--amber-100);border-color:#fde68a;color:var(--amber-600)}
+.result-alert.err{background:var(--red-100);border-color:#fecaca;color:var(--red-600)}
 
 /* ============================================================
-   CJENOVNIK
+   SUMMARY
    ============================================================ */
-.price-tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
+.summary{margin-top:18px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.summary h4{background:var(--navy-800);color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:11px 16px;font-weight:700}
+.summary-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;border-top:1px solid var(--line);font-size:14px}
+.summary-row:first-of-type{border-top:none}
+.summary-row .val{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.summary-row .val.green{color:var(--green-600)}
+.summary-row .val.orange{color:var(--amber-600)}
+.summary-row .val.blue{color:var(--navy-700)}
+.summary-row.total{background:var(--gold-100);border-top:2px solid var(--gold-400)}
+.summary-row.total .val{font-size:17px;color:var(--navy-900)}
+.summary-sub{font-size:12px;color:var(--ink-500);font-weight:500;display:block}
 
-.price-tab {
-    padding: 8px 16px;
-    background: #fff;
-    border: 2px solid var(--border);
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-2);
-    cursor: pointer;
-    font-family: inherit;
-    transition: all .18s;
-}
-
-.price-tab.active {
-    background: var(--navy);
-    color: #fff;
-    border-color: var(--navy);
-}
-
-.price-tab:hover:not(.active) {
-    border-color: var(--navy-3);
-    color: var(--navy);
-}
-
-.price-table { display: none; }
-.price-table.active { display: block; }
-
-.price-note {
-    margin-top: 14px;
-    padding: 12px 14px;
-    background: var(--info-bg);
-    border: 1px solid var(--info-br);
-    border-radius: var(--r-sm);
-    font-size: 12.5px;
-    color: var(--info);
-    line-height: 1.55;
-}
+/* Perspective blocks */
+.persp{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.2vw,18px);margin-top:18px}
+@media(max-width:900px){.persp{grid-template-columns:1fr}}
+.persp-card{border:1.5px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff}
+.persp-card .head{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--navy-800);margin-bottom:10px}
+.persp-card .head .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:17px;flex:none}
+.persp-card.vrtic .ic{background:var(--blue-100);color:var(--navy-700)}
+.persp-card.min .ic{background:var(--green-100);color:var(--green-600)}
+.persp-card.rod .ic{background:var(--gold-100);color:var(--gold-600)}
+.persp-card .big{font-size:clamp(21px,2vw,28px);font-weight:900;font-variant-numeric:tabular-nums;color:var(--navy-900);letter-spacing:-.02em}
+.persp-card .small{font-size:12.5px;color:var(--ink-500);margin-top:4px;line-height:1.5}
 
 /* ============================================================
-   DOKUMENTI
+   OBRAČUN PO DJETETU (per-child cost breakdown)
    ============================================================ */
-.doc-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-}
-
-.doc-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    background: #fff;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r-sm);
-    text-decoration: none;
-    color: var(--text);
-    transition: all .18s;
-    font-size: 13.5px;
-}
-
-.doc-item:hover {
-    border-color: var(--navy-3);
-    box-shadow: var(--shadow);
-    transform: translateY(-2px);
-}
-
-.doc-item .ico {
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
-.doc-item .meta strong {
-    display: block;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 2px;
-    font-size: 13.5px;
-}
-
-.doc-item .meta span {
-    font-size: 11.5px;
-    color: var(--text-muted);
-}
+.obracun-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--ink-500);margin:20px 0 11px;display:flex;align-items:center;gap:9px}
+.obracun-title::before{content:"";width:4px;height:15px;border-radius:2px;background:var(--gold-500);flex:none}
+.ob-grid{display:grid;gap:13px}
+.ob-card{border:1.5px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden}
+.ob-card.is-free{border-color:#bbf7d0}
+.ob-card.is-skip{border-style:dashed;background:#fafbfe}
+.ob-head{display:flex;align-items:center;gap:11px;padding:12px 15px;background:var(--blue-50);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ob-card.is-free .ob-head{background:var(--green-50)}
+.ob-card.is-skip .ob-head{background:#f1f5f9;border-bottom:none}
+.ob-num{width:30px;height:30px;border-radius:8px;background:var(--navy-800);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13.5px;flex:none}
+.ob-card.is-free .ob-num{background:var(--green-600)}
+.ob-card.is-skip .ob-num{background:var(--ink-400)}
+.ob-ttl{font-weight:800;color:var(--navy-800);font-size:14px;line-height:1.3}
+.ob-ttl small{display:block;font-weight:600;color:var(--ink-500);font-size:11.5px;margin-top:1px}
+.ob-tags{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ob-body{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:680px){.ob-body{grid-template-columns:1fr}}
+.ob-group{padding:13px 15px}
+.ob-group+.ob-group{border-left:1px solid var(--line)}
+@media(max-width:680px){.ob-group+.ob-group{border-left:none;border-top:1px solid var(--line)}}
+.ob-ghead{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:800;color:var(--ink-500);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.ob-ghead .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.ob-group.mj .ob-ghead .dot{background:var(--blue-500)}
+.ob-group.jk .ob-ghead .dot{background:var(--gold-500)}
+.ob-line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:4px 0;line-height:1.45}
+.ob-line .lbl{color:var(--ink-700)}
+.ob-line .amt{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-900)}
+.ob-line .amt.neg{color:var(--green-600)}
+.ob-line .amt.free{color:var(--green-600)}
+.ob-line.total{border-top:1px dashed var(--line-strong);margin-top:6px;padding-top:8px;font-weight:800}
+.ob-line.total .lbl{color:var(--navy-800)}
+.ob-line.total .amt{font-size:14.5px;color:var(--navy-900)}
+.ob-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 15px;background:#fafbfe;border-top:1px solid var(--line);font-size:12.5px;flex-wrap:wrap}
+.ob-foot .lbl{color:var(--ink-700);font-weight:700}
+.ob-foot .amt{font-weight:800;font-variant-numeric:tabular-nums;color:var(--navy-900)}
+.ob-note{padding:9px 15px;font-size:11.5px;color:var(--ink-500);border-top:1px solid var(--line);background:#fbfcfe;line-height:1.5}
+.ob-note b{color:var(--amber-600)}
 
 /* ============================================================
-   PODEŠAVANJA
+   FLOW
    ============================================================ */
-details.settings {
-    background: #fff;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r);
-    margin-top: 20px;
+.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:6px}
+.flow-step{
+  flex:1 1 150px;min-width:140px;border:1.5px solid var(--line);border-radius:var(--radius);padding:15px 13px;
+  text-align:center;background:#fff;transition:border-color .15s,box-shadow .15s
 }
-
-details.settings summary {
-    padding: 16px 20px;
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--navy);
-    font-size: 14px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    user-select: none;
+.flow-step.active{border-color:var(--blue-400);box-shadow:0 0 0 4px var(--blue-50)}
+.flow-step .ico{font-size:24px}
+.flow-step .lbl{font-size:12px;font-weight:800;color:var(--navy-700);text-transform:uppercase;letter-spacing:.04em;margin-top:5px}
+.flow-step .amt{font-size:17px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:6px;color:var(--navy-900)}
+.flow-step .amt.green{color:var(--green-600)}
+.flow-step .amt.blue{color:var(--navy-700)}
+.flow-step .sub{font-size:11.5px;color:var(--ink-500);margin-top:5px;line-height:1.4}
+.flow-arrow{display:grid;place-items:center;color:var(--ink-400);font-size:20px;flex:none}
+@media(max-width:760px){.flow-arrow{transform:rotate(90deg);width:100%;height:22px}}
+.flow-result{
+  margin-top:16px;padding:15px 18px;border-radius:var(--radius);background:var(--navy-900);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap
 }
+.flow-result .lbl{font-size:13px;color:#c8d6ee;font-weight:600}
+.flow-result .amt{font-size:24px;font-weight:900;color:var(--gold-400);font-variant-numeric:tabular-nums}
 
-details.settings summary::-webkit-details-marker { display: none; }
+/* ============================================================
+   LEGAL ITEMS
+   ============================================================ */
+.legal-item{padding:13px 15px;border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:10px;background:#fbfcff}
+.legal-item .ref{font-size:12px;font-weight:800;color:var(--navy-700);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.legal-item .txt{font-size:13.5px;color:var(--ink-700);line-height:1.5}
+.legal-item strong{color:var(--navy-900)}
 
-details.settings summary::before {
-    content: "⚙️";
-    font-size: 18px;
+/* ============================================================
+   PRICE TABS
+   ============================================================ */
+.price-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.price-tab{
+  padding:9px 16px;border-radius:999px;border:1.5px solid var(--line-strong);background:#fff;color:var(--ink-700);
+  font-size:13.5px;font-weight:700;cursor:pointer;transition:all .15s
 }
+.price-tab:hover{border-color:var(--navy-600);color:var(--navy-700)}
+.price-tab.active{background:var(--navy-800);border-color:var(--navy-800);color:#fff}
+.price-table{display:none}
+.price-table.active{display:block}
+.price-note{margin-top:16px;padding:13px 15px;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:var(--radius-sm);font-size:12.5px;color:var(--ink-700);line-height:1.55}
+.price-note strong{color:var(--navy-800)}
 
-details.settings[open] summary {
-    border-bottom: 1px solid var(--border);
+/* ============================================================
+   DOCUMENTS
+   ============================================================ */
+.doc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.doc-item{
+  display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:var(--radius);
+  background:#fff;transition:all .15s;overflow:hidden
 }
+.doc-item:hover{border-color:var(--blue-400);box-shadow:var(--shadow);transform:translateY(-1px)}
+.doc-open{display:flex;align-items:center;gap:13px;padding:14px 16px;flex:1;min-width:0;text-decoration:none;color:inherit}
+.doc-open:hover{text-decoration:none}
+.doc-open .ico{width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;font-size:19px;background:var(--blue-50);color:var(--navy-700)}
+.doc-open .meta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.doc-open .meta strong{font-size:13.5px;color:var(--navy-900);line-height:1.35}
+.doc-open .meta span{font-size:11.5px;color:var(--ink-500)}
+.doc-dl{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:none;
+  padding:0 15px;border-left:1.5px solid var(--line);background:var(--blue-50);color:var(--navy-700);
+  font-size:10.5px;font-weight:800;text-decoration:none;transition:background .15s,color .15s;letter-spacing:.02em
+}
+.doc-dl:hover{background:var(--navy-700);color:#fff;text-decoration:none}
+.doc-dl .ar{font-size:16px;line-height:1}
+.cand-alt{font-size:11px;color:var(--ink-500);margin-top:3px;line-height:1.35}
+.cand-alt b{color:var(--amber-600);font-weight:700}
 
-.settings-body {
-    padding: 20px;
-}
-
-.settings-hint {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-    line-height: 1.55;
-    padding: 10px 12px;
-    background: var(--info-bg);
-    border-radius: var(--r-sm);
-    border: 1px solid var(--info-br);
-    color: var(--info);
-}
-
-.price-edit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-.price-edit-grid .form-group {
-    margin-bottom: 0;
-}
-
-.price-edit-grid label {
-    font-size: 11px;
-}
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+.settings{margin-top:clamp(30px,3.4vw,60px);border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow-sm);overflow:hidden}
+.settings summary{padding:16px 20px;cursor:pointer;font-weight:800;color:var(--navy-800);font-size:14.5px;list-style:none;display:flex;align-items:center;gap:10px}
+.settings summary::-webkit-details-marker{display:none}
+.settings summary::before{content:"⚙️";font-size:17px}
+.settings summary::after{content:"▾";margin-left:auto;color:var(--ink-400);transition:transform .2s}
+.settings[open] summary::after{transform:rotate(180deg)}
+.settings-body{padding:0 20px 22px}
+.settings-hint{font-size:12.5px;color:var(--ink-500);margin-bottom:16px;line-height:1.55;padding:11px 14px;background:var(--amber-100);border-radius:var(--radius-sm);border:1px solid #fde68a}
+.settings h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-500);margin:18px 0 10px}
+.price-edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 
 /* ============================================================
    FOOTER
    ============================================================ */
-.footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.75);
-    padding: 32px 0 24px;
-    margin-top: 48px;
-    text-align: center;
-    font-size: 12.5px;
-    line-height: 1.7;
-    border-top: 4px solid var(--gold);
-}
+.footer{margin-top:clamp(34px,4vw,70px);background:var(--navy-900);color:#c8d6ee;padding-block:30px}
+.footer .wrap{display:flex;flex-direction:column;gap:8px}
+.footer-brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:15px}
+.footer-brand .brand-logo{width:32px;height:32px}
+.footer p{font-size:13px;margin:0;max-width:100ch;line-height:1.6}
+.footer .muted{font-size:11.5px;opacity:.65}
 
-.footer strong { color: var(--gold-2); }
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.footer-brand img {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: #fff;
-    padding: 3px;
-}
+/* ============================================================
+   MISC
+   ============================================================ */
+.result-empty{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:44px 20px;color:var(--ink-400)}
+.result-empty .icon{font-size:40px;opacity:.6}
+.muted{color:var(--ink-500)}
+.nowrap{white-space:nowrap}
+.hidden{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.divider{height:1px;background:var(--line);margin:16px 0}
+.kv{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border-bottom:none}
+.kv b{font-variant-numeric:tabular-nums;color:var(--navy-900)}
+.kv span{color:var(--ink-500)}
 
 /* ============================================================
    PRINT
    ============================================================ */
-@media print {
-    @page { margin: 14mm; }
-    
-    body {
-        background: #fff;
-        font-size: 11pt;
-    }
-    
-    .no-print { display: none !important; }
-    
-    .top-bar { 
-        background: var(--navy) !important; 
-        -webkit-print-color-adjust: exact; 
-        print-color-adjust: exact;
-        padding: 10px 0;
-    }
-    
-    .hero {
-        background: var(--navy) !important;
-        padding: 24px 0 40px;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    
-    .hero::before, .hero::after { display: none; }
-    
-    .hero h1 { font-size: 22pt; }
-    .hero-sub { font-size: 11pt; }
-    
-    .intro-card {
-        margin-top: -30px;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    
-    .card {
-        box-shadow: none;
-        border: 1px solid #ccc;
-        page-break-inside: avoid;
-        padding: 14px;
-    }
-    
-    .section { margin-bottom: 22px; }
-    
-    .section-head h2 { font-size: 15pt; }
-    
-    table.data thead {
-        background: var(--navy) !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    
-    .summary, .flow-result, .flow-step, .legal-item, .price-note {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    
-    .flow-step { min-width: 110px; padding: 10px 6px; }
-    .flow-step .amt { font-size: 12pt; }
-    .flow-step .ico { font-size: 20px; }
-    .flow-arrow { font-size: 16px; min-width: 18px; }
-    
-    .child-card { border: 1px solid #ccc; background: #f9f9f9; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    
-    .btn { display: none !important; }
-    
-    details.settings { display: none !important; }
-    
-    a { color: var(--navy); text-decoration: none; }
+@media print{
+  :root{--pad:12mm}
+  body{background:#fff;font-size:10.5pt}
+  .no-print,.top-bar,.btn,.price-tabs,.settings{display:none!important}
+  .hero{color:#000;background:#fff!important;border-bottom:2px solid #000}
+  .hero h1,.hero-sub{color:#000!important}
+  .hero::after{display:none}
+  .hero-badge{background:#f2f2f2!important;border-color:#ccc!important;color:#000!important}
+  .card,.flow-step,.persp-card,.legal-item{box-shadow:none!important;border:1px solid #ccc!important}
+  .card{break-inside:auto}
+  .flow-step,.persp-card,.legal-item,.summary-row,.ob-card{break-inside:avoid}
+  .section{break-inside:auto;margin-top:10mm}
+  .section-head{break-after:avoid}
+  table.data{min-width:0!important}
+  table.data th{background:#eee!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.data tr{break-inside:avoid}
+  .summary h4{background:#eee!important;color:#000!important}
+  a{color:#000!important;text-decoration:none!important}
+  .flow-result{background:#eee!important;color:#000!important}
+  .flow-result .amt{color:#000!important}
+  .persp{grid-template-columns:repeat(3,1fr)!important}
+  .grid-calc{grid-template-columns:1fr!important}
+  .grid-2{grid-template-columns:1fr 1fr!important}
 }
+@page{size:A4;margin:12mm}
 </style>
 </head>
 <body>
@@ -1173,397 +492,372 @@ details.settings[open] summary {
 <!-- ============================================================
      TOP BAR
      ============================================================ -->
-<div class="top-bar no-print">
-    <div class="wrap">
-        <div class="brand">
-            <img src="https://www.montessorihouse.ba/favicon.ico" alt="IMH" class="brand-logo">
-            <div class="brand-text">
-                <span class="brand-name">International Montessori House</span>
-                <span class="brand-loc">Sarajevo</span>
-            </div>
-        </div>
-        <nav class="top-nav">
-            <a href="#kalkulator">Kalkulator</a>
-            <a href="#tok">Tok subvencije</a>
-            <a href="#pravni">Pravni okvir</a>
-            <a href="#cjenovnik">Cjenovnik</a>
-            <a href="#dokumenti">Dokumenti</a>
-        </nav>
+<header class="top-bar no-print">
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-logo" aria-hidden="true">IMH</span>
+      <span class="brand-text">
+        <span class="brand-name">International Montessori House</span>
+        <span class="brand-loc">Sarajevo</span>
+      </span>
     </div>
-</div>
+    <nav class="top-nav" aria-label="Navigacija">
+      <a href="#uputstvo">Uputstvo</a>
+      <a href="#kalkulator">Kalkulator</a>
+      <a href="#tok">Tok subvencije</a>
+      <a href="#pravni">Pravni okvir</a>
+      <a href="#cjenovnik">Cjenovnik</a>
+      <a href="#dokumenti">Dokumenti</a>
+    </nav>
+  </div>
+</header>
 
 <!-- ============================================================
      HERO
      ============================================================ -->
 <section class="hero">
-    <div class="wrap">
-        <h1>Subvencije za porodice 3+</h1>
-        <p class="hero-sub">Interaktivni kalkulator i vodič kroz Program sufinansiranja boravka djece u privatnim predškolskim ustanovama Kantona Sarajevo za školsku 2026/2027. godinu.</p>
-        <div class="hero-badges">
-            <span class="hero-badge">📜 Službene novine KS 16/26</span>
-            <span class="hero-badge">🏫 IMH &amp; IDSS</span>
-            <span class="hero-badge">👨‍👩‍👧‍👦 3+ djeca</span>
-        </div>
+  <div class="wrap">
+    <h1>Sufinansiranje za porodice 3+</h1>
+    <p class="hero-sub">Interaktivni kalkulator i vodič kroz Program sufinansiranja boravka djece predškolske dobi u privatnim predškolskim ustanovama Kantona Sarajevo za porodice sa troje i više djece — školska 2026/2027. godina.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">📜 Službene novine KS 16/26</span>
+      <span class="hero-badge">🎓 IMH · Toddler &amp; Predškolska</span>
+      <span class="hero-badge">👨‍👩‍👧‍👦 Porodice 3+</span>
+      <span class="hero-badge">🧮 Tačan obračun za fakturisanje</span>
     </div>
+  </div>
 </section>
 
 <div class="wrap">
 
-    <!-- ============================================================
-         INTRO
-         ============================================================ -->
-    <div class="card intro-card">
-        <div class="intro-icon">📖</div>
-        <div class="intro-text">
-            <h2>Jedini izvor istine</h2>
-            <p>Ovaj dokument sadrži sve informacije potvrđene kroz analizu važeće legislative Kantona Sarajevo i kanonskog cjenovnika IMH. Kalkulator ispod omogućava tačan obračun za bilo koju kombinaciju djece — u vrtiću, u školi, na fakultetu, tek rođene, u drugom domaćinstvu ili drugom vrtiću.</p>
-        </div>
-        <div class="btn-group no-print">
-            <button class="btn btn-primary" onclick="window.print()">🖨️ Štampaj dokument</button>
-        </div>
+  <!-- ============================================================
+       INTRO
+       ============================================================ -->
+  <div class="card intro-card">
+    <div class="intro-icon" aria-hidden="true">📖</div>
+    <div class="intro-text">
+      <h2>Jedini izvor istine za obračun</h2>
+      <p>Ovaj dokument sadrži sve informacije potvrđene kroz analizu važeće legislative Kantona Sarajevo (Program sufinansiranja, Sl. novine KS br. 16/26) i kanonskog cjenovnika IMH. Kalkulator omogućava tačan obračun za svaku kombinaciju djece i prikazuje obračun iz tri ugla: <strong>vrtić (faktura)</strong>, <strong>ministarstvo (subvencija)</strong> i <strong>roditelj (neto trošak)</strong>.</p>
+    </div>
+    <div class="btn-group no-print">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Štampaj dokument</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       UPUTSTVO
+       ============================================================ -->
+  <section class="section" id="uputstvo">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">🧭</span>
+      <div>
+        <h2>Uputstvo za upotrebu</h2>
+        <span class="sub">Tri koraka do tačnog obračuna za zvaničnu fakturu.</span>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="step">
+        <span class="step-num">1</span>
+        <h3>Unesite podatke o porodici</h3>
+        <p>Odaberite status lica (domaće/strano) i ukupan broj djece. Djeca se navode <strong>redoslijedom rođenja</strong> (1. = najstarije). Za svako dijete odaberite status i, ako pohađa IMH/IDSS predškolski program, tip boravka (cjelodnevni/poludnevni).</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <h3>Pročitajte obračun</h3>
+        <p>Kalkulator odmah prikazuje kategoriju sufinansiranja (čl. 6–10), mjesečnu školarinu, subvenciju i iznos koji plaća roditelj — te jednokratne troškove (upis, depozit, participacija). Rubni slučajevi su posebno označeni.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <h3>Iskoristite tri ugla</h3>
+        <p>Rezultat je razdvojen na <strong>vrtić (faktura)</strong>, <strong>ministarstvo (subvencija)</strong> i <strong>roditelj (neto trošak)</strong> — spremno za izradu zvanične fakture i mjesečnog izvještaja Ministarstvu.</p>
+      </div>
+    </div>
+    <div class="persp-legend">
+      <span><span class="dot" style="background:var(--blue-500)"></span> Vrtić fakturiše punu cijenu</span>
+      <span><span class="dot" style="background:var(--green-500)"></span> Ministarstvo isplaćuje subvenciju</span>
+      <span><span class="dot" style="background:var(--gold-500)"></span> Roditelj plaća razliku</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       KALKULATOR
+       ============================================================ -->
+  <section class="section" id="kalkulator">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">🧮</span>
+      <div>
+        <h2>Kalkulator subvencije i obračun</h2>
+        <span class="sub">Unesite podatke o djeci — obračun se ažurira automatski.</span>
+      </div>
     </div>
 
-    <!-- ============================================================
-         KALKULATOR
-         ============================================================ -->
-    <section class="section" id="kalkulator" style="margin-top: 36px;">
-        <div class="section-head">
-            <span class="icon">🧮</span>
-            <h2>Kalkulator subvencije</h2>
+    <div class="grid-calc">
+
+      <!-- INPUT -->
+      <div class="card no-print">
+        <div class="card-title">Podaci o porodici</div>
+        <div class="card-desc">Redoslijed djece odgovara redoslijedu rođenja (1. = najstarije dijete).</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lice">Status lica</label>
+            <select id="lice" onchange="izracunaj()">
+              <option value="domace">Domaće lice (BiH, KS)</option>
+              <option value="strano">Strano lice</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="brojDjece">Ukupan broj djece u porodici</label>
+            <input type="number" id="brojDjece" value="3" min="1" max="12" inputmode="numeric" onchange="postaviBroj()">
+          </div>
         </div>
 
-        <div class="grid-2-asym">
+        <label class="checkbox-row">
+          <input type="checkbox" id="august" onchange="izracunaj()">
+          <span><strong>Obračun za august</strong> (posljednji mjesec školske godine) — subvencija Ministarstva umanjuje se za 50&nbsp;%.</span>
+        </label>
 
-            <!-- INPUT -->
-            <div class="card no-print">
-                <div class="card-title">Podaci o porodici</div>
-                <div class="card-desc">Unesite podatke za svako dijete. Redoslijed odgovara redoslijedu rođenja (1. = najstarije).</div>
+        <div id="childrenContainer"></div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="program">Program</label>
-                        <select id="program" onchange="izracunaj()">
-                            <option value="imh">IMH — Toddler / Predškolska grupa</option>
-                            <option value="idss">IDSS — Predškolska grupa</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="lice">Status lica</label>
-                        <select id="lice" onchange="izracunaj()">
-                            <option value="domaće">Domaće lice</option>
-                            <option value="strano">Strano lice</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="brojDjece">Ukupan broj djece u porodici</label>
-                    <input type="number" id="brojDjece" value="3" min="1" max="12" onchange="renderDjecu()">
-                </div>
-
-                <label class="checkbox-row">
-                    <input type="checkbox" id="august" onchange="izracunaj()">
-                    <span><strong>Obračun za august 2026.</strong> — subvencija Ministarstva umanjuje se za 50 % u odnosu na ostale mjesece.</span>
-                </label>
-
-                <div id="childrenContainer" style="margin-top: 14px;"></div>
-
-                <div class="btn-group">
-                    <button class="btn btn-ghost btn-sm" onclick="dodajDijete()">+ Dodaj dijete</button>
-                    <button class="btn btn-gold btn-sm" onclick="resetKalkulator()">↺ Reset</button>
-                </div>
-            </div>
-
-            <!-- REZULTAT -->
-            <div class="card" id="rezultatCard">
-                <div class="card-title">Rezultat obračuna</div>
-                <div class="card-desc" id="rezultatOpis">Popunite podatke i kliknite „Izračunaj“.</div>
-                <div id="rezultat">
-                    <div class="result-empty">
-                        <span class="icon">🧮</span>
-                        Unesite podatke o djeci da biste vidjeli obračun subvencije.
-                    </div>
-                </div>
-            </div>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" onclick="dodajDijete()">＋ Dodaj dijete</button>
+          <button class="btn btn-gold btn-sm" onclick="resetKalkulator()">↺ Reset</button>
         </div>
-    </section>
+      </div>
 
-    <!-- ============================================================
-         TOK SUBVENCIJE
-         ============================================================ -->
-    <section class="section" id="tok">
-        <div class="section-head">
-            <span class="icon">🔄</span>
-            <h2>Vizuelni tok subvencije</h2>
+      <!-- REZULTAT -->
+      <div class="card" id="rezultatCard">
+        <div class="card-title">Rezultat obračuna</div>
+        <div class="card-desc" id="rezultatOpis">Popunite podatke o djeci da biste vidjeli obračun.</div>
+        <div id="rezultat">
+          <div class="result-empty">
+            <span class="icon" aria-hidden="true">🧮</span>
+            Unesite podatke o djeci da biste vidjeli obračun subvencije.
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="card">
-            <div class="card-desc">Prikaz toka novca između roditelja, IMH i Ministarstva. Iznosi se automatski ažuriraju na osnovu kalkulacije iznad.</div>
+  <!-- ============================================================
+       TOK SUBVENCIJE
+       ============================================================ -->
+  <section class="section" id="tok">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">🔄</span>
+      <div>
+        <h2>Vizuelni tok subvencije</h2>
+        <span class="sub">Prikaz toka novca između roditelja, vrtića i Ministarstva.</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-desc">Iznosi se automatski ažuriraju na osnovu kalkulacije iznad. Vrtić uvijek fakturiše puni iznos, a Ministarstvo roditelju refundira subvenciju.</div>
+      <div class="flow" id="flow"></div>
+      <div class="flow-result">
+        <span class="lbl">Neto mjesečni trošak roditelja (školarina − subvencija)</span>
+        <span class="amt" id="flowNeto">— KM</span>
+      </div>
+    </div>
+  </section>
 
-            <div class="flow" id="flow">
-                <!-- generisano JS-om -->
-            </div>
+  <!-- ============================================================
+       PRAVNI OKVIR
+       ============================================================ -->
+  <section class="section" id="pravni">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">⚖️</span>
+      <div>
+        <h2>Pravni okvir</h2>
+        <span class="sub">Program sufinansiranja („Službene novine Kantona Sarajevo“, broj 16/26).</span>
+      </div>
+    </div>
 
-            <div class="flow-result" id="flowResult">
-                <span class="lbl">Neto trošak roditelja (mjesečno)</span>
-                <span class="amt" id="flowNeto">— KM</span>
-            </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Kategorije sufinansiranja</div>
+        <div class="card-desc">Članovi 6–10 Programa i Pravilnika o sufinansiranju.</div>
+
+        <div class="legal-item">
+          <div class="ref">Član 6 · Redovno sufinansiranje</div>
+          <div class="txt">Subvencija: <strong>235,00 KM</strong> (cjelodnevni) / <strong>120,00 KM</strong> (poludnevni) mjesečno. Ostvaruje svako dijete koje ispunjava opšte uslove, osim ako se primjenjuje kategorija iz čl. 7–9.</div>
         </div>
-    </section>
-
-    <!-- ============================================================
-         PRAVNI OKVIR
-         ============================================================ -->
-    <section class="section" id="pravni">
-        <div class="section-head">
-            <span class="icon">⚖️</span>
-            <h2>Pravni okvir</h2>
+        <div class="legal-item">
+          <div class="ref">Član 7 · Porodice 3+ — dvoje u vrtiću</div>
+          <div class="txt">Ako porodica ima troje ili više djece i dvoje djece pohađa predškolsku ustanovu, sufinansiranje za <strong>prvo i drugo dijete u vrtiću</strong> iznosi <strong>300,00 KM</strong> (cjelodnevni) / <strong>150,00 KM</strong> (poludnevni) mjesečno.</div>
         </div>
-
-        <div class="grid-2">
-            <div class="card">
-                <div class="card-title">Ključni članovi Pravilnika</div>
-                <div class="card-desc">Na osnovu Programa sufinansiranja („Službene novine Kantona Sarajevo“, broj 16/26).</div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 4 · Opći uslovi</div>
-                    <div class="txt">Upis djeteta u EMIS, ugovor o boravku, državljanstvo BiH s prebivalištem u Kantonu Sarajevo, ugovor Ustanove s Ministarstvom, cijena u dozvoljenim granicama.</div>
-                </div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 6 · Manje od troje djece</div>
-                    <div class="txt">Subvencija: <strong>235 KM</strong> (cjelodnevni) / <strong>120 KM</strong> (poludnevni) mjesečno.</div>
-                </div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 7 · Dvoje ili više djece u vrtiću</div>
-                    <div class="txt">Za prvo i drugo dijete u vrtiću, kad dvoje ili više djece pohađa vrtić: <strong>300 KM</strong> (cjelodnevni) / <strong>150 KM</strong> (poludnevni) mjesečno.</div>
-                </div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 8 · Treće i naredno dijete u vrtiću</div>
-                    <div class="txt">Ako dvoje djece već pohađa vrtić, treće i svako naredno dijete u vrtiću <strong>ne plaća cijenu boravka</strong> — sufinansira se 100 %.</div>
-                </div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 9 · Treće i naredno dijete po rođenju</div>
-                    <div class="txt">Za treće i svako naredno dijete po rođenju, sufinansira se <strong>80 % cijene boravka</strong>, bez obzira na to koliko djece pohađa vrtić.</div>
-                </div>
-
-                <div class="legal-item">
-                    <div class="ref">Član 10 · Konačna kategorija</div>
-                    <div class="txt">Konačnu kategoriju i iznos subvencije određuje Ministarstvo. <strong>Povrat roditelju jednak je iznosu koji Ministarstvo isplati Ustanovi.</strong></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Hijerarhija i napomene</div>
-                <div class="card-desc">Redoslijed primjene članova i ključne napomene za obračun.</div>
-
-                <div class="result-alert info" style="margin-bottom: 12px;">
-                    <span class="ico">🔢</span>
-                    <span><strong>Striktna hijerarhija:</strong> Čl. 8 → Čl. 9 → Čl. 7 → Čl. 6. Primjenjuje se prvi član koji ispunjava uslove.</span>
-                </div>
-
-                <div class="result-alert ok" style="margin-bottom: 12px;">
-                    <span class="ico">✅</span>
-                    <span><strong>Djeca u osnovnoj/srednjoj školi i na fakultetu</strong> računaju se u ukupan broj djece u porodici i u redni broj po rođenju, ali <em>ne</em> u „djecu u vrtiću“.</span>
-                </div>
-
-                <div class="result-alert info" style="margin-bottom: 12px;">
-                    <span class="ico">ℹ️</span>
-                    <span><strong>Tek rođeno dijete</strong> (mlađe od 6 mjeseci) računa se u ukupan broj djece u porodici, ali ne pohađa vrtić i ne ostvaruje subvenciju.</span>
-                </div>
-
-                <div class="result-alert warn" style="margin-bottom: 12px;">
-                    <span class="ico">⚠️</span>
-                    <span><strong>Djeca u drugom domaćinstvu i drugoj ustanovi:</strong> slijedi se definicija iz legislative. U nejasnim slučajevima upućuje se upit Ministarstvu.</span>
-                </div>
-
-                <div class="result-alert info">
-                    <span class="ico">📅</span>
-                    <span><strong>August 2026:</strong> subvencija po djetetu umanjuje se za 50 % u odnosu na ostale mjesece.</span>
-                </div>
-            </div>
+        <div class="legal-item">
+          <div class="ref">Član 8 · Porodice 3+ — besplatan boravak</div>
+          <div class="txt">Ako dvoje djece iz porodice sa troje i više djece već pohađa predškolsku ustanovu, boravak <strong>trećeg i svakog narednog djeteta u vrtiću je besplatan</strong> (subvencija 100&nbsp;% cijene).</div>
         </div>
-    </section>
-
-    <!-- ============================================================
-         CJENOVNIK
-         ============================================================ -->
-    <section class="section" id="cjenovnik">
-        <div class="section-head">
-            <span class="icon">💵</span>
-            <h2>Cjenovnik 2026/2027</h2>
+        <div class="legal-item">
+          <div class="ref">Član 9 · Porodice 3+ — 80&nbsp;% cijene</div>
+          <div class="txt">Za <strong>treće i svako naredno dijete po rođenju</strong> sufinansira se <strong>80&nbsp;% cijene boravka</strong>, bez obzira na to da li prvo i drugo dijete pohađaju vrtić.</div>
         </div>
-
-        <div class="card">
-            <div class="card-desc">Službeni cjenovnik International Montessori House Sarajevo i Internationale Deutsche Schule Sarajevo za školsku 2026/2027. godinu.</div>
-
-            <div class="price-tabs no-print">
-                <button class="price-tab active" onclick="switchPriceTab('imh', this)">IMH — Toddler &amp; Predškolska</button>
-                <button class="price-tab" onclick="switchPriceTab('idss', this)">IDSS — Predškolska</button>
-            </div>
-
-            <!-- IMH -->
-            <div class="price-table active" id="price-imh">
-                <div class="tbl-wrap">
-                    <table class="data">
-                        <thead>
-                            <tr>
-                                <th>Usluga</th>
-                                <th>Domaća lica (KM)</th>
-                                <th>Strana lica (KM)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Upis (jednokratno)</td><td class="money-neutral">200,00</td><td class="money-neutral">200,00</td></tr>
-                            <tr><td>Participacija za potrošni materijal (jednokratno)</td><td class="money-neutral">300,00</td><td class="money-neutral">300,00</td></tr>
-                            <tr><td>Depozit</td><td class="money-neutral">710,00</td><td class="money-neutral">810,00</td></tr>
-                            <tr><td>Depozit (20 % za svako naredno dijete)</td><td class="money-neutral">570,00</td><td class="money-neutral">650,00</td></tr>
-                            <tr><td><strong>Školarina — mjesečno</strong></td><td class="money-neutral"><strong>710,00</strong></td><td class="money-neutral"><strong>810,00</strong></td></tr>
-                            <tr><td>Školarina — mjesečno (20 % za naredno dijete)</td><td class="money-neutral">570,00</td><td class="money-neutral">650,00</td></tr>
-                            <tr><td>Školarina — godišnje</td><td class="money-neutral">8.520,00</td><td class="money-neutral">9.720,00</td></tr>
-                            <tr><td>Školarina — godišnje (20 % za naredno dijete)</td><td class="money-neutral">6.840,00</td><td class="money-neutral">7.800,00</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- IDSS -->
-            <div class="price-table" id="price-idss">
-                <div class="tbl-wrap">
-                    <table class="data">
-                        <thead>
-                            <tr>
-                                <th>Usluga</th>
-                                <th>Domaća lica (KM)</th>
-                                <th>Strana lica (KM)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Upis (jednokratno)</td><td class="money-neutral">500,00</td><td class="money-neutral">1.000,00</td></tr>
-                            <tr><td>Participacija za potrošni materijal (jednokratno)</td><td class="money-neutral">300,00</td><td class="money-neutral">300,00</td></tr>
-                            <tr><td>Depozit</td><td class="money-neutral">750,00</td><td class="money-neutral">850,00</td></tr>
-                            <tr><td>Depozit (20 % za svako naredno dijete)</td><td class="money-neutral">600,00</td><td class="money-neutral">680,00</td></tr>
-                            <tr><td><strong>Školarina — mjesečno</strong></td><td class="money-neutral"><strong>750,00</strong></td><td class="money-neutral"><strong>850,00</strong></td></tr>
-                            <tr><td>Školarina — mjesečno (20 % za naredno dijete)</td><td class="money-neutral">600,00</td><td class="money-neutral">680,00</td></tr>
-                            <tr><td>Školarina — godišnje</td><td class="money-neutral">9.000,00</td><td class="money-neutral">10.200,00</td></tr>
-                            <tr><td>Školarina — godišnje (20 % za naredno dijete)</td><td class="money-neutral">7.200,00</td><td class="money-neutral">8.160,00</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="price-note">
-                <strong>Napomena:</strong> Uplate upisnine, depozita i školarine vrše se na bankovni račun P.P.U. International Montessori House Sarajevo, SPARKASSE BANK d.d. Sarajevo, broj računa: 1990 4900 5848 7943, IBAN BA39 1990490058487943, SWIFT (BIC) ABSBBA22. Troškove bankovnih naknada preuzima roditelj/staratelj. Plaćanje obaveza vrši se najkasnije do 5. u tekućem mjesecu.
-            </div>
+        <div class="legal-item">
+          <div class="ref">Član 10 · Konačna kategorija</div>
+          <div class="txt">Kategoriju za svako dijete određuje <strong>Ministarstvo</strong> na osnovu podataka iz EMIS-predškolsko. Ako dijete ispunjava uslove za više kategorija, vrtić roditelju vraća samo iznos koji je Ministarstvo isplatilo.</div>
         </div>
-    </section>
+      </div>
 
-    <!-- ============================================================
-         DOKUMENTI
-         ============================================================ -->
-    <section class="section no-print" id="dokumenti">
-        <div class="section-head">
-            <span class="icon">📂</span>
-            <h2>Zvanični dokumenti</h2>
+      <div class="card">
+        <div class="card-title">Ključne napomene za obračun</div>
+        <div class="card-desc">Pravila koja direktno utiču na tačnost kalkulacije.</div>
+
+        <div class="result-alert info">
+          <span class="ico" aria-hidden="true">🔢</span>
+          <span><strong>Redni broj po rođenju</strong> određuje se prema redoslijedu rođenja sve djece u porodici. <strong>Redni broj u vrtiću</strong> određuje se prema redoslijedu djece iz iste porodice koja pohađaju <em>bilo koju</em> predškolsku ustanovu (javnu ili privatnu). Djeca u osnovnoj/srednjoj školi i na fakultetu ne računaju se u djecu u vrtiću.</span>
         </div>
-
-        <div class="card">
-            <div class="card-desc">Direktni linkovi na zvanične odobrene dokumente u GitHub repozitoriju.</div>
-
-            <div class="doc-list">
-                <a class="doc-item" href="https://github.com/Internationale-Deutsche-Schule-Sarajevo/porodice-3plus" target="_blank" rel="noopener">
-                    <span class="ico">📁</span>
-                    <div class="meta">
-                        <strong>GitHub repozitorij</strong>
-                        <span>Zvanični izvor dokumenata</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="price-note" style="margin-top: 16px;">
-                U repozitoriju se nalaze isključivo zvanično odobreni dokumenti. Radni i interni dokumenti nisu javno dostupni putem ovog linka.
-            </div>
+        <div class="result-alert ok">
+          <span class="ico" aria-hidden="true">✅</span>
+          <span><strong>Vrtić nikada nije oštećen:</strong> roditelj uplaćuje puni iznos cijene, Ministarstvo isplaćuje subvenciju, a vrtić roditelju refundira primljeni iznos. Vrtić ukupno prima punu cijenu (roditelj + Ministarstvo).</span>
         </div>
-    </section>
-
-    <!-- ============================================================
-         PODEŠAVANJA
-         ============================================================ -->
-    <details class="settings no-print">
-        <summary>Podešavanja cijena i parametara</summary>
-        <div class="settings-body">
-            <div class="settings-hint">
-                Ako dođe do promjene cjenovnika ili uslova, ovdje možete privremeno izmijeniti parametre. Nakon izmjene, kalkulator se automatski ažurira. Za trajnu izmjenu potrebno je ažurirati kanonski dokument.
-            </div>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px;">IMH — mjesečna školarina</h4>
-            <div class="price-edit-grid">
-                <div class="form-group">
-                    <label>Domaće — prvo dijete</label>
-                    <input type="number" id="cfg-imh-domace-prvo" value="710" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Domaće — naredno dijete</label>
-                    <input type="number" id="cfg-imh-domace-naredno" value="570" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Strano — prvo dijete</label>
-                    <input type="number" id="cfg-imh-strano-prvo" value="810" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Strano — naredno dijete</label>
-                    <input type="number" id="cfg-imh-strano-naredno" value="650" onchange="izracunaj()">
-                </div>
-            </div>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 16px 0 10px;">IDSS — mjesečna školarina</h4>
-            <div class="price-edit-grid">
-                <div class="form-group">
-                    <label>Domaće — prvo dijete</label>
-                    <input type="number" id="cfg-idss-domace-prvo" value="750" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Domaće — naredno dijete</label>
-                    <input type="number" id="cfg-idss-domace-naredno" value="600" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Strano — prvo dijete</label>
-                    <input type="number" id="cfg-idss-strano-prvo" value="850" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Strano — naredno dijete</label>
-                    <input type="number" id="cfg-idss-strano-naredno" value="680" onchange="izracunaj()">
-                </div>
-            </div>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 16px 0 10px;">Subvencije (fiksni iznosi)</h4>
-            <div class="price-edit-grid">
-                <div class="form-group">
-                    <label>Čl. 6 — cjelodnevni</label>
-                    <input type="number" id="cfg-cl6-cjelo" value="235" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Čl. 6 — poludnevni</label>
-                    <input type="number" id="cfg-cl6-pola" value="120" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Čl. 7 — cjelodnevni</label>
-                    <input type="number" id="cfg-cl7-cjelo" value="300" onchange="izracunaj()">
-                </div>
-                <div class="form-group">
-                    <label>Čl. 7 — poludnevni</label>
-                    <input type="number" id="cfg-cl7-pola" value="150" onchange="izracunaj()">
-                </div>
-            </div>
-
-            <div class="btn-group">
-                <button class="btn btn-ghost btn-sm" onclick="resetCijene()">↺ Vrati na zadane vrijednosti</button>
-            </div>
+        <div class="result-alert warn">
+          <span class="ico" aria-hidden="true">⚠️</span>
+          <span><strong>Strana lica nemaju pravo</strong> na sufinansiranje po ovom Programu (nema subvencije).</span>
         </div>
-    </details>
+        <div class="result-alert info">
+          <span class="ico" aria-hidden="true">📅</span>
+          <span><strong>August</strong> je posljednji mjesec školske godine — subvencija po djetetu umanjuje se za <strong>50&nbsp;%</strong>. Septembar je početak naredne školske godine. (Program: period sufinansiranja 01.09.2026.–30.08.2027.; umanjenje se odnosi na august koji završava školsku godinu.)</span>
+        </div>
+        <div class="result-alert info">
+          <span class="ico" aria-hidden="true">📉</span>
+          <span><strong>Ispis sredinom mjeseca:</strong> vrtić naplaćuje puni mjesec, a subvencija se obračunava <strong>proporcionalno broju dana</strong> pohađanja (datum ispisa u EMIS-u).</span>
+        </div>
+        <div class="result-alert info">
+          <span class="ico" aria-hidden="true">🌗</span>
+          <span><strong>Poludnevni boravak</strong> nije predviđen Pravilnikom o cijenama. Izuzetno, ako ga odobri Upravni odbor, obračunava se kao <strong>pola mjesečne školarine</strong>, a jednokratni troškovi (upis, depozit, participacija) također u polovini.</span>
+        </div>
+        <div class="result-alert info">
+          <span class="ico" aria-hidden="true">🏫</span>
+          <span><strong>IMH i IDSS Predškolska</strong> su programi iste ustanove (P.P.U. IMH) i dijele isti cjenovnik — popust za naredno dijete i oslobađanje za 3.+ dijete primjenjuju se objedinjeno. <strong>IDSS osnovna škola</strong> je posebno pravno lice i ne ulazi u ovaj obračun.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CJENOVNIK
+       ============================================================ -->
+  <section class="section" id="cjenovnik">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">💵</span>
+      <div>
+        <h2>Cjenovnik 2026/2027</h2>
+        <span class="sub">Službeni cjenovnik P.P.U. International Montessori House Sarajevo.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-desc">Cijene važeće za školsku 2026/2027. godinu. Školarina se obračunava mjesečno; upis, depozit i participacija su jednokratni troškovi.</div>
+
+      <div class="price-tabs no-print">
+        <button class="price-tab active" onclick="switchPriceTab('imh', this)">IMH — Toddler &amp; Predškolska</button>
+        <button class="price-tab" onclick="switchPriceTab('idss', this)">IDSS — Predškolska</button>
+      </div>
+
+      <div class="price-table active" id="price-imh">
+        <div class="tbl-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Usluga</th><th class="num">Domaća lica (KM)</th><th class="num">Strana lica (KM)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Upis (jednokratno)</td><td class="money-neutral">200,00</td><td class="money-neutral">200,00</td></tr>
+              <tr><td>Participacija za potrošni materijal (jednokratno)</td><td class="money-neutral">300,00</td><td class="money-neutral">300,00</td></tr>
+              <tr><td>Depozit</td><td class="money-neutral">710,00</td><td class="money-neutral">810,00</td></tr>
+              <tr><td>Depozit (20&nbsp;% za svako naredno dijete)</td><td class="money-neutral">570,00</td><td class="money-neutral">650,00</td></tr>
+              <tr><td><strong>Školarina — mjesečno</strong></td><td class="money-neutral"><strong>710,00</strong></td><td class="money-neutral"><strong>810,00</strong></td></tr>
+              <tr><td>Školarina — mjesečno (20&nbsp;% za naredno dijete)</td><td class="money-neutral">570,00</td><td class="money-neutral">650,00</td></tr>
+              <tr><td>Školarina — godišnje</td><td class="money-neutral">8.520,00</td><td class="money-neutral">9.720,00</td></tr>
+              <tr><td>Školarina — godišnje (20&nbsp;% za naredno dijete)</td><td class="money-neutral">6.840,00</td><td class="money-neutral">7.800,00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="price-table" id="price-idss">
+        <div class="tbl-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Usluga</th><th class="num">Domaća lica (KM)</th><th class="num">Strana lica (KM)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Upis (jednokratno)</td><td class="money-neutral">500,00</td><td class="money-neutral">1.000,00</td></tr>
+              <tr><td>Participacija za potrošni materijal (jednokratno)</td><td class="money-neutral">300,00</td><td class="money-neutral">300,00</td></tr>
+              <tr><td>Depozit</td><td class="money-neutral">750,00</td><td class="money-neutral">850,00</td></tr>
+              <tr><td>Depozit (20&nbsp;% za svako naredno dijete)</td><td class="money-neutral">600,00</td><td class="money-neutral">680,00</td></tr>
+              <tr><td><strong>Školarina — mjesečno</strong></td><td class="money-neutral"><strong>750,00</strong></td><td class="money-neutral"><strong>850,00</strong></td></tr>
+              <tr><td>Školarina — mjesečno (20&nbsp;% za naredno dijete)</td><td class="money-neutral">600,00</td><td class="money-neutral">680,00</td></tr>
+              <tr><td>Školarina — godišnje</td><td class="money-neutral">9.000,00</td><td class="money-neutral">10.200,00</td></tr>
+              <tr><td>Školarina — godišnje (20&nbsp;% za naredno dijete)</td><td class="money-neutral">7.200,00</td><td class="money-neutral">8.160,00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="price-note">
+        <strong>Napomena:</strong> Uplate upisnine, depozita i školarine vrše se na bankovni račun P.P.U. International Montessori House Sarajevo, SPARKASSE BANK d.d. Sarajevo, broj računa: 1990 4900 5848 7943, IBAN BA39 1990490058487943, SWIFT (BIC) ABSBBA22. Troškove bankovnih naknada preuzima roditelj/staratelj. Plaćanje obaveza vrši se najkasnije do 5. u tekućem mjesecu. <strong>Poludnevni boravak</strong> nije predviđen pravilnikom; izuzetno, ako Upravni odbor odobri, obračunava se pola cijene školarine i ostali troškovi u polovini cijene.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DOKUMENTI
+       ============================================================ -->
+  <section class="section no-print" id="dokumenti">
+    <div class="section-head">
+      <span class="icon" aria-hidden="true">📂</span>
+      <div>
+        <h2>Zvanični dokumenti</h2>
+        <span class="sub">Klikom na naziv dokumenta otvarate i možete preuzeti konkretni dokument.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-desc">Provjereni zvanični dokumenti relevantni za obračun sufinansiranja. Klik na naziv otvara dokument u pregledu, a dugme <strong>Preuzmi</strong> preuzima taj dokument — bez usmjeravanja na listu svih dokumenata.</div>
+      <div class="doc-list" id="docList"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PODEŠAVANJA
+       ============================================================ -->
+  <details class="settings no-print">
+    <summary>Podešavanja cijena i parametara</summary>
+    <div class="settings-body">
+      <div class="settings-hint">
+        Ako dođe do promjene cjenovnika ili uslova, ovdje možete privremeno izmijeniti parametre. Nakon izmjene, kalkulator se automatski ažurira. Za trajnu izmjenu potrebno je ažurirati kanonski dokument.
+      </div>
+
+      <h4>IMH — mjesečna školarina</h4>
+      <div class="price-edit-grid">
+        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-imh-domace-prvo" value="710" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-imh-domace-naredno" value="570" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-imh-strano-prvo" value="810" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-imh-strano-naredno" value="650" onchange="izracunaj()"></div>
+      </div>
+
+      <h4>IDSS — mjesečna školarina</h4>
+      <div class="price-edit-grid">
+        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-idss-domace-prvo" value="750" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-idss-domace-naredno" value="600" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-idss-strano-prvo" value="850" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-idss-strano-naredno" value="680" onchange="izracunaj()"></div>
+      </div>
+
+      <h4>Subvencije (fiksni iznosi)</h4>
+      <div class="price-edit-grid">
+        <div class="form-group"><label>Čl. 6 — cjelodnevni</label><input type="number" id="cfg-cl6-cjelo" value="235" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 6 — poludnevni</label><input type="number" id="cfg-cl6-pola" value="120" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 7 — cjelodnevni</label><input type="number" id="cfg-cl7-cjelo" value="300" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 7 — poludnevni</label><input type="number" id="cfg-cl7-pola" value="150" onchange="izracunaj()"></div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-ghost btn-sm" onclick="resetCijene()">↺ Vrati na zadane vrijednosti</button>
+      </div>
+    </div>
+  </details>
 
 </div>
 
@@ -1571,560 +865,535 @@ details.settings[open] summary {
      FOOTER
      ============================================================ -->
 <footer class="footer">
-    <div class="wrap">
-        <div class="footer-brand">
-            <img src="https://www.montessorihouse.ba/favicon.ico" alt="IMH">
-            <strong>International Montessori House Sarajevo</strong>
-        </div>
-        <p>Standalone dokument izrađen na osnovu kanonskog sadržaja repozitorija <strong>porodice-3plus</strong> i važeće legislative Kantona Sarajevo.</p>
-        <p style="margin-top: 6px; font-size: 11.5px; opacity: 0.65;">Verzija dokumenta: 2026/2027 · Posljednje ažuriranje: <span id="datum">—</span></p>
+  <div class="wrap">
+    <div class="footer-brand">
+      <span class="brand-logo" aria-hidden="true">IMH</span>
+      <span>International Montessori House Sarajevo</span>
     </div>
+    <p>Standalone dokument izrađen na osnovu kanonskog sadržaja repozitorija <strong>porodice-3plus</strong> i važeće legislative Kantona Sarajevo.</p>
+    <p class="muted">Verzija dokumenta: 2026/2027 · Posljednje ažuriranje: <span id="datum">—</span></p>
+  </div>
 </footer>
 
 <script>
 "use strict";
+/* ============================================================
+   PODACI / KONSTANTE
+   ============================================================ */
+const DEFAULT_PRICES = {
+  imh:  { domace: { prvo: 710, naredno: 570 }, strano: { prvo: 810, naredno: 650 } },
+  idss: { domace: { prvo: 750, naredno: 600 }, strano: { prvo: 850, naredno: 680 } }
+};
+const ONETIME = {
+  imh:  { upis: { domace: 200, strano: 200 }, part: { domace: 300, strano: 300 },
+          depozit: { domace: { prvo: 710, naredno: 570 }, strano: { prvo: 810, naredno: 650 } } },
+  idss: { upis: { domace: 500, strano: 1000 }, part: { domace: 300, strano: 300 },
+          depozit: { domace: { prvo: 750, naredno: 600 }, strano: { prvo: 850, naredno: 680 } } }
+};
+const DEFAULT_SUB = { cl6: { cjelo: 235, pola: 120 }, cl7: { cjelo: 300, pola: 150 } };
+
+const STATUS_LABEL = {
+  imh: "IMH vrtić (Toddler / Predškolska)",
+  idss: "IDSS Predškolska grupa",
+  drugi: "Drugi vrtić (javni ili privatni)",
+  skola: "Osnovna / srednja škola",
+  fakultet: "Fakultet",
+  beba: "Tek rođeno (< 6 mjeseci)"
+};
+const VRTIC_STATUS = ["imh", "idss", "drugi"]; // pohađaju bilo koju predškolsku ustanovu
+const PPU_STATUS = ["imh", "idss"];            // programi P.P.U. IMH (isti cjenovnik)
 
 /* ============================================================
    STANJE
    ============================================================ */
-const DEFAULT_PRICES = {
-    imh: {
-        "domaće": { prvo: 710, naredno: 570 },
-        "strano": { prvo: 810, naredno: 650 }
-    },
-    idss: {
-        "domaće": { prvo: 750, naredno: 600 },
-        "strano": { prvo: 850, naredno: 680 }
-    }
-};
-
-const DEFAULT_SUB = {
-    cl6: { cjelo: 235, pola: 120 },
-    cl7: { cjelo: 300, pola: 150 }
-};
-
 let state = {
-    djeca: [],
-    brojDjece: 3,
-    program: "imh",
-    lice: "domaće",
-    august: false
+  djeca: [],
+  lice: "domace",
+  august: false
 };
 
 /* ============================================================
-   POMOĆNE FUNKCIJE
+   POMOĆNE
    ============================================================ */
-function getPrices() {
-    return {
-        imh: {
-            "domaće": {
-                prvo: broj(document.getElementById("cfg-imh-domace-prvo"), DEFAULT_PRICES.imh["domaće"].prvo),
-                naredno: broj(document.getElementById("cfg-imh-domace-naredno"), DEFAULT_PRICES.imh["domaće"].naredno)
-            },
-            "strano": {
-                prvo: broj(document.getElementById("cfg-imh-strano-prvo"), DEFAULT_PRICES.imh["strano"].prvo),
-                naredno: broj(document.getElementById("cfg-imh-strano-naredno"), DEFAULT_PRICES.imh["strano"].naredno)
-            }
-        },
-        idss: {
-            "domaće": {
-                prvo: broj(document.getElementById("cfg-idss-domace-prvo"), DEFAULT_PRICES.idss["domaće"].prvo),
-                naredno: broj(document.getElementById("cfg-idss-domace-naredno"), DEFAULT_PRICES.idss["domaće"].naredno)
-            },
-            "strano": {
-                prvo: broj(document.getElementById("cfg-idss-strano-prvo"), DEFAULT_PRICES.idss["strano"].prvo),
-                naredno: broj(document.getElementById("cfg-idss-strano-naredno"), DEFAULT_PRICES.idss["strano"].naredno)
-            }
-        }
-    };
-}
-
-function getSub() {
-    return {
-        cl6: {
-            cjelo: broj(document.getElementById("cfg-cl6-cjelo"), DEFAULT_SUB.cl6.cjelo),
-            pola: broj(document.getElementById("cfg-cl6-pola"), DEFAULT_SUB.cl6.pola)
-        },
-        cl7: {
-            cjelo: broj(document.getElementById("cfg-cl7-cjelo"), DEFAULT_SUB.cl7.cjelo),
-            pola: broj(document.getElementById("cfg-cl7-pola"), DEFAULT_SUB.cl7.pola)
-        }
-    };
-}
-
 function broj(el, fallback) {
-    if (!el) return fallback;
-    const v = parseFloat(el.value);
-    return isNaN(v) ? fallback : v;
+  if (!el) return fallback;
+  const v = parseFloat(el.value);
+  return isNaN(v) ? fallback : v;
 }
-
 function fmt(n) {
-    return Number(n).toLocaleString("bs-BA", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    }) + " KM";
+  return Number(n).toLocaleString("bs-BA", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " KM";
 }
-
-function fmtShort(n) {
-    return Number(n).toLocaleString("bs-BA", {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    });
+function fmt0(n) {
+  return Number(n).toLocaleString("bs-BA", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+function getPrices() {
+  return {
+    imh: {
+      domace: { prvo: broj(document.getElementById("cfg-imh-domace-prvo"), DEFAULT_PRICES.imh.domace.prvo), naredno: broj(document.getElementById("cfg-imh-domace-naredno"), DEFAULT_PRICES.imh.domace.naredno) },
+      strano: { prvo: broj(document.getElementById("cfg-imh-strano-prvo"), DEFAULT_PRICES.imh.strano.prvo), naredno: broj(document.getElementById("cfg-imh-strano-naredno"), DEFAULT_PRICES.imh.strano.naredno) }
+    },
+    idss: {
+      domace: { prvo: broj(document.getElementById("cfg-idss-domace-prvo"), DEFAULT_PRICES.idss.domace.prvo), naredno: broj(document.getElementById("cfg-idss-domace-naredno"), DEFAULT_PRICES.idss.domace.naredno) },
+      strano: { prvo: broj(document.getElementById("cfg-idss-strano-prvo"), DEFAULT_PRICES.idss.strano.prvo), naredno: broj(document.getElementById("cfg-idss-strano-naredno"), DEFAULT_PRICES.idss.strano.naredno) }
+    }
+  };
+}
+function getSub() {
+  return {
+    cl6: { cjelo: broj(document.getElementById("cfg-cl6-cjelo"), DEFAULT_SUB.cl6.cjelo), pola: broj(document.getElementById("cfg-cl6-pola"), DEFAULT_SUB.cl6.pola) },
+    cl7: { cjelo: broj(document.getElementById("cfg-cl7-cjelo"), DEFAULT_SUB.cl7.cjelo), pola: broj(document.getElementById("cfg-cl7-pola"), DEFAULT_SUB.cl7.pola) }
+  };
 }
 
 /* ============================================================
    RENDER DJECE
    ============================================================ */
 function renderDjecu() {
-    const input = document.getElementById("brojDjece");
-    let n = parseInt(input.value, 10);
-    if (isNaN(n) || n < 1) n = 1;
-    if (n > 12) n = 12;
-    state.brojDjece = n;
-    input.value = n;
-
-    while (state.djeca.length < n) {
-        state.djeca.push({
-            uzrast: "vrtic",
-            tip: "cjelodnevni",
-            uIMH: true,
-            odricanje: false
-        });
-    }
-    if (state.djeca.length > n) {
-        state.djeca = state.djeca.slice(0, n);
-    }
-
-    const container = document.getElementById("childrenContainer");
-    let html = "";
-    state.djeca.forEach((d, i) => {
-        html += renderDijete(d, i);
-    });
-    container.innerHTML = html;
-    izracunaj();
+  const container = document.getElementById("childrenContainer");
+  let html = "";
+  state.djeca.forEach((d, i) => { html += renderDijete(d, i); });
+  container.innerHTML = html;
+  izracunaj();
 }
 
 function renderDijete(d, i) {
-    const jeVrtic = d.uzrast === "vrtic";
-    const showOptions = jeVrtic && d.uIMH;
+  const jePpu = PPU_STATUS.includes(d.status);
+  let html = '<div class="child-card">';
+  html += '<div class="child-head"><span class="child-num">' + (i + 1) + ". dijete po rođenju</span>";
+  if (state.djeca.length > 1) {
+    html += '<button class="child-remove" onclick="ukloniDijete(' + i + ')" title="Ukloni dijete" aria-label="Ukloni dijete">✕</button>';
+  }
+  html += "</div>";
 
-    let gridClass = showOptions ? "child-grid" : (jeVrtic ? "child-grid-2" : "child-grid-2");
+  html += '<div class="child-grid">';
+  // Status
+  html += '<div class="form-group"><label>Status / uzrast</label><select onchange="azuriraj(' + i + ", 'status', this.value)\">";
+  for (const k in STATUS_LABEL) {
+    html += '<option value="' + k + '"' + (d.status === k ? " selected" : "") + ">" + STATUS_LABEL[k] + "</option>";
+  }
+  html += "</select></div>";
 
-    let html = '<div class="child-card">';
-    html += '<div class="child-head">';
-    html += '<span class="child-num">' + (i + 1) + '. dijete po rođenju</span>';
-    if (state.djeca.length > 1) {
-        html += '<button class="child-remove" onclick="ukloniDijete(' + i + ')" title="Ukloni dijete">✕</button>';
+  // Tip boravka (samo za PPU)
+  if (jePpu) {
+    html += '<div class="form-group"><label>Tip boravka</label><select onchange="azuriraj(' + i + ", 'tip', this.value)\">";
+    html += '<option value="cjelodnevni"' + (d.tip === "cjelodnevni" ? " selected" : "") + ">Cjelodnevni</option>";
+    html += '<option value="poludnevni"' + (d.tip === "poludnevni" ? " selected" : "") + ">Poludnevni (uz odobrenje)</option>";
+    html += "</select></div>";
+  }
+  html += "</div>"; // child-grid
+
+  // Opcije za PPU djecu
+  if (jePpu) {
+    html += '<div class="child-actions">';
+    html += '<label class="checkbox-row" style="margin-bottom:8px"><input type="checkbox"' + (d.odricanje ? " checked" : "") + ' onchange="azuriraj(' + i + ", 'odricanje', this.checked)\"><span>Roditelj se <strong>odriče sufinansiranja</strong> za ovo dijete</span></label>";
+    html += '<label class="checkbox-row" style="margin-bottom:8px"><input type="checkbox"' + (d.ispis ? " checked" : "") + ' onchange="azuriraj(' + i + ", 'ispis', this.checked)\"><span><strong>Ispis u toku mjeseca</strong> — subvencija se obračunava proporcionalno danima</span></label>";
+    if (d.ispis) {
+      html += '<div class="form-row"><div class="form-group"><label>Dana pohađanja</label><input type="number" min="0" max="31" value="' + (d.dani != null ? d.dani : 15) + '" onchange="azuriraj(' + i + ", 'dani', this.value)\"></div>";
+      html += '<div class="form-group"><label>Ukupno dana u mjesecu</label><input type="number" min="1" max="31" value="' + (d.ukupnoDana != null ? d.ukupnoDana : 30) + '" onchange="azuriraj(' + i + ", 'ukupnoDana', this.value)\"></div></div>";
     }
-    html += '</div>';
+    html += "</div>";
+  }
 
-    html += '<div class="' + gridClass + '">';
-
-    // Uzrast
-    html += '<div class="form-group">';
-    html += '<label>Uzrast</label>';
-    html += '<select onchange="azuriraj(' + i + ', \'uzrast\', this.value)">';
-    html += '<option value="vrtic"' + (d.uzrast === "vrtic" ? " selected" : "") + '>Vrtić (6 mj. – 6 god.)</option>';
-    html += '<option value="skola"' + (d.uzrast === "skola" ? " selected" : "") + '>Osnovna / srednja škola</option>';
-    html += '<option value="fakultet"' + (d.uzrast === "fakultet" ? " selected" : "") + '>Fakultet</option>';
-    html += '<option value="beba"' + (d.uzrast === "beba" ? " selected" : "") + '>Tek rođeno (&lt; 6 mj.)</option>';
-    html += '</select>';
-    html += '</div>';
-
-    if (jeVrtic) {
-        // Tip boravka
-        html += '<div class="form-group">';
-        html += '<label>Tip boravka</label>';
-        html += '<select onchange="azuriraj(' + i + ', \'tip\', this.value)">';
-        html += '<option value="cjelodnevni"' + (d.tip === "cjelodnevni" ? " selected" : "") + '>Cjelodnevni</option>';
-        html += '<option value="poludnevni"' + (d.tip === "poludnevni" ? " selected" : "") + '>Poludnevni</option>';
-        html += '</select>';
-        html += '</div>';
-
-        // Pohađa IMH
-        html += '<div class="form-group">';
-        html += '<label>Pohađa IMH</label>';
-        html += '<select onchange="azuriraj(' + i + ', \'uIMH\', this.value === \'true\')">';
-        html += '<option value="true"' + (d.uIMH ? " selected" : "") + '>Da — IMH</option>';
-        html += '<option value="false"' + (!d.uIMH ? " selected" : "") + '>Ne — drugi vrtić</option>';
-        html += '</select>';
-        html += '</div>';
-    }
-
-    html += '</div>'; // grid
-
-    if (showOptions) {
-        html += '<div class="child-actions">';
-        html += '<label class="checkbox-row" style="margin-bottom:0; flex:1;">';
-        html += '<input type="checkbox"' + (d.odricanje ? " checked" : "") + ' onchange="azuriraj(' + i + ', \'odricanje\', this.checked)">';
-        html += '<span>Roditelj se <strong>odriče sufinansiranja</strong> za ovo dijete</span>';
-        html += '</label>';
-        html += '</div>';
-    }
-
-    html += '</div>'; // child-card
-    return html;
+  html += "</div>"; // child-card
+  return html;
 }
 
 function azuriraj(index, kljuc, vrijednost) {
-    const d = state.djeca[index];
-    if (!d) return;
-
+  const d = state.djeca[index];
+  if (!d) return;
+  if (kljuc === "dani" || kljuc === "ukupnoDana") {
+    d[kljuc] = parseFloat(vrijednost);
+  } else {
     d[kljuc] = vrijednost;
-
-    if (kljuc === "uzrast") {
-        if (vrijednost === "vrtic") {
-            if (!d.tip) d.tip = "cjelodnevni";
-            if (typeof d.uIMH !== "boolean") d.uIMH = true;
-        }
+  }
+  if (kljuc === "status") {
+    if (PPU_STATUS.includes(vrijednost)) {
+      if (!d.tip) d.tip = "cjelodnevni";
     }
-
-    renderDjecu();
+  }
+  renderDjecu();
 }
 
+function postaviBroj() {
+  const input = document.getElementById("brojDjece");
+  let n = parseInt(input.value, 10);
+  if (isNaN(n) || n < 1) n = 1;
+  if (n > 12) n = 12;
+  input.value = n;
+  while (state.djeca.length < n) state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 });
+  if (state.djeca.length > n) state.djeca = state.djeca.slice(0, n);
+  renderDjecu();
+}
 function dodajDijete() {
-    if (state.djeca.length >= 12) return;
-    document.getElementById("brojDjece").value = state.djeca.length + 1;
-    renderDjecu();
+  if (state.djeca.length >= 12) return;
+  state.djeca.push({ status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 });
+  document.getElementById("brojDjece").value = state.djeca.length;
+  renderDjecu();
 }
-
 function ukloniDijete(index) {
-    if (state.djeca.length <= 1) return;
-    state.djeca.splice(index, 1);
-    document.getElementById("brojDjece").value = state.djeca.length;
-    renderDjecu();
+  if (state.djeca.length <= 1) return;
+  state.djeca.splice(index, 1);
+  document.getElementById("brojDjece").value = state.djeca.length;
+  renderDjecu();
 }
-
 function resetKalkulator() {
-    state.djeca = [
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false },
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false },
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false }
-    ];
-    document.getElementById("brojDjece").value = 3;
-    document.getElementById("august").checked = false;
-    document.getElementById("program").value = "imh";
-    document.getElementById("lice").value = "domaće";
-    renderDjecu();
+  state.djeca = [
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 }
+  ];
+  document.getElementById("brojDjece").value = 3;
+  document.getElementById("august").checked = false;
+  document.getElementById("lice").value = "domace";
+  renderDjecu();
 }
 
 /* ============================================================
    IZRAČUN
    ============================================================ */
 function izracunaj() {
-    state.program = document.getElementById("program").value;
-    state.lice = document.getElementById("lice").value;
-    state.august = document.getElementById("august").checked;
+  state.lice = document.getElementById("lice").value;
+  state.august = document.getElementById("august").checked;
+  const prices = getPrices();
+  const sub = getSub();
 
-    const prices = getPrices()[state.program][state.lice];
-    const sub = getSub();
+  const N = state.djeca.length;
+  // Djeca u bilo kojem vrtiću (redni broj u vrtiću)
+  const vrticIdx = [];
+  state.djeca.forEach((d, i) => { if (VRTIC_STATUS.includes(d.status)) vrticIdx.push(i); });
+  const M = vrticIdx.length;
+  const redniUVrticu = {};
+  vrticIdx.forEach((idx, k) => { redniUVrticu[idx] = k + 1; });
 
-    // Djeca u vrtiću (bilo kojem)
-    const vrticDjeca = state.djeca.filter(d => d.uzrast === "vrtic");
-    const nVrtic = vrticDjeca.length;
+  let ppuCounter = 0; // redoslijed djece u P.P.U. IMH (IMH + IDSS)
+  const rezultati = [];
+  let totalSkol = 0, totalSub = 0, totalRodSkol = 0, totalJednokratno = 0, totalImhPrihod = 0;
 
-    const rezultati = [];
-    let imhBrojac = 0;
-    let totalPuna = 0;
-    let totalSubvencija = 0;
-    let totalRoditelj = 0;
-    let brojObračunatih = 0;
+  state.djeca.forEach((d, i) => {
+    const redniPoRodjenju = i + 1;
+    const r = {
+      index: i, redniPoRodjenju, status: d.status, tip: d.tip,
+      obracun: false, skolarina: 0, subvencija: 0, roditeljSkol: 0,
+      clan: null, nap: "", popust: false, oslobodjen: false, unsure: false,
+      ispis: !!d.ispis, odricanje: !!d.odricanje,
+      redniUVrticu: redniUVrticu[i] || null, kandidati: [],
+      upis: 0, depozit: 0, participacija: 0, jednokratno: 0
+    };
 
-    state.djeca.forEach((d, i) => {
-        const redniPoRodjenju = i + 1;
-        const rez = {
-            index: i,
-            redniPoRodjenju: redniPoRodjenju,
-            ime: "Dijete " + redniPoRodjenju,
-            obračun: false,
-            puna: 0,
-            subvencija: 0,
-            roditelj: 0,
-            clan: null,
-            napomena: "",
-            popust: false,
-            redniUVrticu: null,
-            odricanje: d.odricanje || false
-        };
+    // Nije u P.P.U. IMH — ne obračunava se (ali utiče na N i M)
+    if (!PPU_STATUS.includes(d.status)) {
+      if (d.status === "drugi") r.nap = "Drugi vrtić — računa se u djecu u vrtiću, ali nije u IMH obračunu";
+      else if (d.status === "skola") r.nap = "Osnovna / srednja škola — ne pohađa vrtić";
+      else if (d.status === "fakultet") r.nap = "Fakultet — ne pohađa vrtić";
+      else if (d.status === "beba") r.nap = "Tek rođeno (< 6 mj.) — ne pohađa vrtić";
+      rezultati.push(r);
+      return;
+    }
 
-        // Ako nije u IMH vrtiću, preskoči obračun
-        if (d.uzrast !== "vrtic" || !d.uIMH) {
-            if (d.uzrast === "skola") rez.napomena = "Osnovna / srednja škola — ne pohađa vrtić";
-            else if (d.uzrast === "fakultet") rez.napomena = "Fakultet — ne pohađa vrtić";
-            else if (d.uzrast === "beba") rez.napomena = "Tek rođeno — ne pohađa vrtić";
-            else if (d.uzrast === "vrtic" && !d.uIMH) rez.napomena = "Drugi vrtić — nije u IMH obračunu";
-            rezultati.push(rez);
-            return;
+    r.obracun = true;
+    const ent = d.status;
+    const tab = prices[ent][state.lice];
+
+    // Redoslijed u P.P.U. IMH
+    ppuCounter++;
+    r.popust = ppuCounter > 1;
+    r.oslobodjen = ppuCounter >= 3; // 3.+ dijete oslobođeno školarine (Pravilnik o cijenama, čl. 4)
+
+    // Cijena boravka (školarina) — 1. dijete: prvo; 2.+: naredno (20% popust)
+    let cijena = r.popust ? tab.naredno : tab.prvo;
+    if (d.tip === "poludnevni") cijena = cijena / 2;
+    r.skolarina = cijena;
+
+    // ---- Subvencija ----
+    const jeStrano = state.lice === "strano";
+    if (d.odricanje) {
+      r.clan = "—"; r.subvencija = 0; r.nap = "Roditelj se odrekao sufinansiranja";
+    } else if (jeStrano) {
+      r.clan = "—"; r.subvencija = 0; r.nap = "Strano lice — nema pravo na sufinansiranje";
+    } else {
+      const cands = [];
+      if (N < 3) {
+        cands.push({ clan: "6", iznos: d.tip === "poludnevni" ? sub.cl6.pola : sub.cl6.cjelo, osnov: "Porodica sa manje od troje djece" });
+      } else {
+        if (M >= 2) {
+          if (r.redniUVrticu <= 2) cands.push({ clan: "7", iznos: d.tip === "poludnevni" ? sub.cl7.pola : sub.cl7.cjelo, osnov: "Prvo/drugo dijete u vrtiću (dvoje ili više pohađa)" });
+          else cands.push({ clan: "8", iznos: cijena, osnov: "Treće i naredno dijete u vrtiću — besplatan boravak" });
         }
+        if (redniPoRodjenju >= 3) cands.push({ clan: "9", iznos: cijena * 0.8, osnov: "Treće i naredno dijete po rođenju — 80 % cijene" });
+        if (cands.length === 0) cands.push({ clan: "6", iznos: d.tip === "poludnevni" ? sub.cl6.pola : sub.cl6.cjelo, osnov: "Redovno — Program nije izričit za ovaj slučaj", unsure: true });
+      }
+      cands.forEach(x => { if (x.iznos > cijena) x.iznos = cijena; });
+      cands.sort((a, b) => b.iznos - a.iznos);
+      const best = cands[0];
+      r.kandidati = cands;
+      r.clan = best.clan;
+      r.osnov = best.osnov;
+      r.subvencija = best.iznos;
+      r.unsure = !!best.unsure || cands.length > 1;
+      if (r.oslobodjen) r.nap = "Treće/naredno dijete u IMH — oslobođeno školarine (čl. 4 Pravilnika o cijenama)";
+    }
 
-        rez.obračun = true;
-        brojObračunatih++;
+    // August −50%
+    if (state.august) r.subvencija = r.subvencija * 0.5;
 
-        // 20% popust za naredno dijete (2. i naredno upisano u IMH)
-        imhBrojac++;
-        rez.popust = imhBrojac > 1;
-        const punaCijena = rez.popust ? prices.naredno : prices.prvo;
-        rez.puna = punaCijena;
+    // Ispis — proporcionalno danima
+    if (d.ispis) {
+      const dani = (d.dani != null ? d.dani : 15);
+      const ukupno = (d.ukupnoDana != null && d.ukupnoDana > 0) ? d.ukupnoDana : 30;
+      const faktor = Math.max(0, Math.min(1, dani / ukupno));
+      r.subvencija = r.subvencija * faktor;
+      r.nap = (r.nap ? r.nap + " · " : "") + "Ispis: subvencija proporcionalno (" + dani + "/" + ukupno + " dana)";
+    }
 
-        // Redni broj u vrtiću (1-based, među svom djecom u vrtiću)
-        rez.redniUVrticu = vrticDjeca.indexOf(d) + 1;
+    r.roditeljSkol = r.skolarina - r.subvencija;
 
-        let subvencija = 0;
-        let clan = null;
-        let napomena = "";
+    // ---- Jednokratni troškovi ----
+    const ot = ONETIME[ent];
+    const osl = r.oslobodjen;
+    let upis = osl ? 0 : ot.upis[state.lice];
+    let part = osl ? 0 : ot.part[state.lice];
+    let dep = osl ? 0 : (r.popust ? ot.depozit[state.lice].naredno : ot.depozit[state.lice].prvo);
+    if (d.tip === "poludnevni") { upis = upis / 2; part = part / 2; dep = dep / 2; }
+    r.upis = upis; r.participacija = part; r.depozit = dep;
+    r.jednokratno = upis + part + dep;
 
-        // Striktna hijerarhija: čl. 8 > čl. 9 > čl. 7 > čl. 6
-        if (d.odricanje) {
-            subvencija = 0;
-            clan = "—";
-            napomena = "Roditelj se odrekao sufinansiranja";
-        } else if (rez.redniUVrticu >= 3) {
-            // Čl. 8: 3. i naredno dijete u vrtiću, ako 2+ pohađa vrtić
-            subvencija = punaCijena;
-            clan = "8";
-            napomena = "Čl. 8 — treće i naredno dijete u vrtiću (100 %)";
-        } else if (redniPoRodjenju >= 3) {
-            // Čl. 9: 3. i naredno po rođenju — 80 %
-            subvencija = punaCijena * 0.8;
-            clan = "9";
-            napomena = "Čl. 9 — treće i naredno po rođenju (80 %)";
-        } else if (nVrtic >= 2) {
-            // Čl. 7: 1. i 2. dijete u vrtiću, ako 2+ pohađa vrtić
-            subvencija = d.tip === "cjelodnevni" ? sub.cl7.cjelo : sub.cl7.pola;
-            clan = "7";
-            napomena = "Čl. 7 — prvo / drugo dijete u vrtiću";
-        } else {
-            // Čl. 6: manje od troje djece
-            subvencija = d.tip === "cjelodnevni" ? sub.cl6.cjelo : sub.cl6.pola;
-            clan = "6";
-            napomena = "Čl. 6 — manje od troje djece";
-        }
+    totalSkol += r.skolarina;
+    totalSub += r.subvencija;
+    totalRodSkol += r.roditeljSkol;
+    totalJednokratno += r.jednokratno;
+    totalImhPrihod += r.skolarina; // roditelj + ministarstvo = puna cijena
+    rezultati.push(r);
+  });
 
-        // Subvencija ne može premašiti punu cijenu
-        if (subvencija > punaCijena) subvencija = punaCijena;
-
-        // August 2026 — umanjenje 50 %
-        if (state.august && !d.odricanje) {
-            subvencija = subvencija * 0.5;
-            napomena += " · August 2026 (−50 %)";
-        }
-
-        rez.subvencija = subvencija;
-        rez.roditelj = punaCijena - subvencija;
-        rez.clan = clan;
-        rez.napomena = napomena;
-
-        totalPuna += punaCijena;
-        totalSubvencija += subvencija;
-        totalRoditelj += rez.roditelj;
-
-        rezultati.push(rez);
-    });
-
-    renderRezultat(rezultati, totalPuna, totalSubvencija, totalRoditelj, brojObračunatih);
-    renderFlow(totalPuna, totalSubvencija, totalRoditelj);
+  renderRezultat(rezultati, { N, M, totalSkol, totalSub, totalRodSkol, totalJednokratno, totalImhPrihod });
+  renderFlow(totalSkol, totalSub, totalRodSkol);
 }
 
 /* ============================================================
    RENDER REZULTATA
    ============================================================ */
-function renderRezultat(rezultati, totalPuna, totalSubvencija, totalRoditelj, brojObračunatih) {
-    const el = document.getElementById("rezultat");
-    const opis = document.getElementById("rezultatOpis");
+function renderRezultat(rezultati, t) {
+  const el = document.getElementById("rezultat");
+  const opis = document.getElementById("rezultatOpis");
+  const obracunatih = rezultati.filter(r => r.obracun).length;
 
-    if (brojObračunatih === 0) {
-        opis.textContent = "Nema djece upisane u IMH vrtić.";
-        el.innerHTML = '<div class="result-alert warn"><span class="ico">⚠️</span><span>Nijedno dijete nije upisano u IMH vrtić. Dodajte dijete sa uzrastom „Vrtić“ i opcijom „Pohađa IMH: Da“.</span></div>';
-        return;
+  if (obracunatih === 0) {
+    opis.textContent = "Nema djece upisane u IMH / IDSS predškolski program.";
+    el.innerHTML = '<div class="result-alert warn"><span class="ico">⚠️</span><span>Nijedno dijete nije upisano u IMH / IDSS predškolski program. Dodajte dijete sa statusom „IMH vrtić“ ili „IDSS Predškolska grupa“.</span></div>';
+    return;
+  }
+
+  opis.textContent = "Obračun za " + obracunatih + " " + (obracunatih === 1 ? "dijete" : "djece") + " u P.P.U. IMH — prema Pravilniku o formiranju cijena (čl. 1 jednokratni troškovi · čl. 2 školarina).";
+  if (state.august) opis.textContent += " (August — subvencija umanjena 50 %.)";
+
+  let html = "";
+  html += state.august
+    ? '<div class="result-alert info"><span class="ico">📅</span><span><strong>August:</strong> subvencija Ministarstva umanjena je za 50 % u odnosu na ostale mjesece.</span></div>'
+    : '<div class="result-alert ok"><span class="ico">✅</span><span>Obračun izvršen prema Programu sufinansiranja (Sl. novine KS 16/26) i Pravilniku o formiranju cijena IMH 2026/2027.</span></div>';
+
+  html += '<div class="result-alert info"><span class="ico">ℹ️</span><span><strong>Kako se iskazuje (Pravilnik o formiranju cijena):</strong> mjesečno se plaća <strong>školarina</strong> (čl. 2), a jednokratno pri upisu <strong>upisnina, depozit i potrošni materijal</strong> (čl. 1). Subvencioniše se isključivo školarina — jednokratni troškovi se ne subvencionišu.</span></div>';
+
+  // ---------- OBRAČUN PO DJETETU ----------
+  html += '<div class="obracun-title">Obračun po djetetu — svi troškovi</div>';
+  html += '<div class="ob-grid">';
+  rezultati.forEach(r => {
+    if (!r.obracun) {
+      html += '<div class="ob-card is-skip"><div class="ob-head"><span class="ob-num">' + r.redniPoRodjenju + '</span><span class="ob-ttl">' + STATUS_LABEL[r.status] + '<small>' + r.nap + '</small></span></div></div>';
+      return;
     }
+    const free = r.roditeljSkol <= 0.005;
+    html += '<div class="ob-card' + (r.oslobodjen ? ' is-free' : '') + '">';
 
-    opis.textContent = "Mjesečni obračun za " + brojObračunatih + " " + (brojObračunatih === 1 ? "dijete" : "djece") + " u IMH.";
-    if (state.august) opis.textContent += " (August 2026 — umanjenje 50 %.)";
+    // Zaglavlje kartice
+    html += '<div class="ob-head"><span class="ob-num">' + r.redniPoRodjenju + '</span>';
+    html += '<span class="ob-ttl">' + STATUS_LABEL[r.status] + '<small>' + (r.tip === "poludnevni" ? "Poludnevni boravak · ½ cijene" : "Cjelodnevni boravak") + '</small></span>';
+    html += '<span class="ob-tags">';
+    if (r.popust) html += '<span class="tag tag-clan" title="20 % popust na školarinu za naredno dijete (čl. 4 Pravilnika o cijenama)">naredno dijete −20 %</span>';
+    if (r.oslobodjen) html += '<span class="tag tag-osl" title="Treće i svako naredno dijete iz iste porodice oslobođeno je školarine, upisnine, depozita i participacije (čl. 4 Pravilnika o cijenama)">3.+ dijete — oslobođeno</span>';
+    const tagClan = r.clan === "—" ? "tag-skip" : "tag-clan";
+    const tagText = r.clan === "—" ? "bez subvencije" : "Subvencija čl. " + r.clan;
+    html += '<span class="tag ' + tagClan + '" title="' + (r.osnov || "") + '">' + tagText + '</span>';
+    html += '</span></div>';
 
-    let html = "";
+    // Tijelo: mjesečno + jednokratno
+    html += '<div class="ob-body">';
 
-    // Alert
-    if (state.august) {
-        html += '<div class="result-alert info"><span class="ico">📅</span><span><strong>August 2026:</strong> subvencija Ministarstva umanjena je za 50 % u odnosu na ostale mjesece.</span></div>';
-    } else {
-        html += '<div class="result-alert ok"><span class="ico">✅</span><span>Obračun izvršen prema Pravilniku o sufinansiranju (Sl. novine KS 16/26).</span></div>';
+    html += '<div class="ob-group mj"><div class="ob-ghead"><span class="dot"></span>Mjesečno · školarina (čl. 2)</div>';
+    html += '<div class="ob-line"><span class="lbl">Školarina (puna cijena)</span><span class="amt">' + fmt(r.skolarina) + '</span></div>';
+    html += '<div class="ob-line"><span class="lbl">Subvencija Ministarstva</span><span class="amt neg">' + (r.subvencija > 0 ? "− " + fmt(r.subvencija) : "0,00 KM") + '</span></div>';
+    html += '<div class="ob-line total"><span class="lbl">Roditelj plaća</span><span class="amt' + (free ? " free" : "") + '">' + (free ? "BESPLATNO" : fmt(r.roditeljSkol)) + '</span></div>';
+    html += '</div>';
+
+    html += '<div class="ob-group jk"><div class="ob-ghead"><span class="dot"></span>Jednokratno pri upisu (čl. 1)</div>';
+    html += obLine("Upisnina", r.upis);
+    html += obLine("Depozit", r.depozit);
+    html += obLine("Potrošni materijal (participacija)", r.participacija);
+    html += '<div class="ob-line total"><span class="lbl">Ukupno jednokratno</span><span class="amt">' + fmt(r.jednokratno) + '</span></div>';
+    html += '</div>';
+
+    html += '</div>'; // ob-body
+
+    // Podnožje: roditeljev iznos za ovo dijete
+    html += '<div class="ob-foot"><span class="lbl">Roditelj za ovo dijete</span><span class="amt">mjesečno ' + (free ? "0,00 KM" : fmt(r.roditeljSkol)) + ' · jednokratno ' + fmt(r.jednokratno) + '</span></div>';
+
+    // Napomena / alternative
+    let note = r.nap || "";
+    if (r.kandidati && r.kandidati.length > 1) {
+      const alts = r.kandidati.slice(1).map(c => "čl. " + c.clan + " (" + fmt(c.iznos) + ")").join(" · ");
+      note += (note ? " " : "") + 'Moguće i: <b>' + alts + '</b> — konačnu kategoriju utvrđuje Ministarstvo (čl. 10).';
     }
+    if (note) html += '<div class="ob-note">' + note + '</div>';
 
-    // Tabela
-    html += '<div class="tbl-wrap"><table class="data">';
-    html += '<thead><tr>';
-    html += '<th>Dijete</th>';
-    html += '<th>Kategorija</th>';
-    html += '<th>Puna cijena</th>';
-    html += '<th>Subvencija</th>';
-    html += '<th>Roditelj plaća</th>';
-    html += '</tr></thead><tbody>';
+    html += '</div>'; // ob-card
+  });
+  html += '</div>'; // ob-grid
 
-    rezultati.forEach(r => {
-        if (!r.obračun) {
-            html += '<tr class="skip-row">';
-            html += '<td><strong>' + r.redniPoRodjenju + '.</strong> ' + r.ime + '</td>';
-            html += '<td colspan="4"><span class="tag tag-skip">' + r.napomena + '</span></td>';
-            html += '</tr>';
-            return;
-        }
+  // ---------- UPOZORENJA ZA RUBNE SLUČAJEVE ----------
+  const nepokriveno = rezultati.filter(r => r.obracun && r.oslobodjen && r.clan === "—");
+  if (nepokriveno.length) {
+    html += '<div class="result-alert warn" style="margin-top:14px"><span class="ico" aria-hidden="true">⚠️</span><span><strong>Čl. 4 Pravilnika o cijenama:</strong> 3.+ dijete u IMH oslobođeno je plaćanja školarine i jednokratnih troškova, ali za ' + nepokriveno.length + ' ' + (nepokriveno.length === 1 ? "dijete" : "djece") + ' nema subvencije koja bi pokrila taj iznos (strano lice ili odricanje). Da vrtić ne bi bio oštećen, provjerite primjenu oslobađanja s Upravnim odborom.</span></div>';
+  }
+  const imaUnsure = rezultati.some(r => r.obracun && r.unsure);
+  if (imaUnsure) {
+    html += '<div class="result-alert info" style="margin-top:14px"><span class="ico" aria-hidden="true">⚖️</span><span><strong>Čl. 10:</strong> za pojedinu djecu ispunjeno je više osnova za sufinansiranje. Prikazan je najpovoljniji iznos, a konačnu kategoriju i iznos utvrđuje <strong>Ministarstvo</strong> na osnovu EMIS-predškolsko. Vrtić roditelju vraća tačno onaj iznos koji Ministarstvo isplati.</span></div>';
+  }
+  const imaIspis = rezultati.some(r => r.obracun && r.ispis);
+  if (imaIspis) {
+    html += '<div class="result-alert info" style="margin-top:14px"><span class="ico" aria-hidden="true">📉</span><span><strong>Ispis (čl. 7 Pravilnika o cijenama):</strong> mjesečna školarina naplaćuje se u punom iznosu bez obzira na datum posljednjeg boravka u tom mjesecu; subvencija Ministarstva obračunava se proporcionalno danima pohađanja. Ako je jedno dijete ispisano, školarina za preostalo dijete iz iste porodice vraća se na puni iznos (prvo dijete) od narednog mjeseca, a uplaćeni depozit se zadržava.</span></div>';
+  }
 
-        const tagClan = r.clan === "—" ? "tag-skip" : "tag-clan";
-        const tagText = r.clan === "—" ? "—" : "Čl. " + r.clan;
-        const puna = r.puna;
-        const sub = r.subvencija;
-        const rod = r.roditelj;
-        const tagRod = rod === 0 ? '<span class="tag tag-free">BESPLATNO</span>' : '<span class="tag tag-paid">' + fmt(rod) + '</span>';
+  // ---------- REKAPITULACIJA ----------
+  const sum = f => rezultati.reduce((a, r) => a + (r.obracun ? f(r) : 0), 0);
+  const totalUpis = sum(r => r.upis), totalDep = sum(r => r.depozit), totalPart = sum(r => r.participacija);
+  const imhUkupno = t.totalSkol + t.totalJednokratno;
 
-        let imeHtml = '<strong>' + r.redniPoRodjenju + '.</strong> ' + r.ime;
-        if (r.popust) imeHtml += ' <span class="tag tag-clan" title="20 % popust za naredno dijete">−20 %</span>';
+  html += '<div class="summary"><h4>Rekapitulacija — ukupno za sve navedeno</h4>';
+  html += '<div class="summary-row"><span>Ukupna mjesečna školarina (puna cijena)<span class="summary-sub">mjesečno · fakturiše vrtić (čl. 2)</span></span><span class="val blue">' + fmt(t.totalSkol) + '</span></div>';
+  html += '<div class="summary-row"><span>Subvencija Ministarstva<span class="summary-sub">mjesečno · isplaćuje se vrtiću, a vrtić je refundira roditelju</span></span><span class="val green">− ' + fmt(t.totalSub) + '</span></div>';
+  html += '<div class="summary-row"><span>Roditelj plaća školarinu<span class="summary-sub">mjesečno (školarina − subvencija)</span></span><span class="val orange">' + fmt(t.totalRodSkol) + '</span></div>';
+  html += '<div class="summary-row"><span>Upisnina<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalUpis) + '</span></div>';
+  html += '<div class="summary-row"><span>Depozit<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalDep) + '</span></div>';
+  html += '<div class="summary-row"><span>Potrošni materijal (participacija)<span class="summary-sub">jednokratno pri upisu · ne subvencioniše se</span></span><span class="val">' + fmt(totalPart) + '</span></div>';
+  html += '<div class="summary-row"><span>Ukupno jednokratno<span class="summary-sub">upisnina + depozit + potrošni materijal</span></span><span class="val">' + fmt(t.totalJednokratno) + '</span></div>';
+  html += '<div class="summary-row total"><span>💳 Vrtić ukupno fakturiše (mjesečno + jednokratno)</span><span class="val">' + fmt(imhUkupno) + '</span></div>';
+  html += '</div>';
 
-        html += '<tr>';
-        html += '<td>' + imeHtml + '</td>';
-        html += '<td><span class="tag ' + tagClan + '">' + tagText + '</span></td>';
-        html += '<td class="money-neutral">' + fmt(puna) + '</td>';
-        html += '<td class="money-pos">' + fmt(sub) + '</td>';
-        html += '<td>' + tagRod + '</td>';
-        html += '</tr>';
-    });
+  // ---------- TRI PERSPEKTIVE ----------
+  html += '<div class="persp">';
+  html += '<div class="persp-card vrtic"><div class="head"><span class="ic">🏫</span>Vrtić (IMH) — mjesečna faktura</div>' +
+          '<div class="big">' + fmt(t.totalSkol) + '</div>' +
+          '<div class="small">Mjesečna školarina (puna cijena). Pri upisu dodatno jednokratno: <strong>' + fmt(t.totalJednokratno) + '</strong>.</div></div>';
+  html += '<div class="persp-card min"><div class="head"><span class="ic">🏛️</span>Ministarstvo — mjesečna subvencija</div>' +
+          '<div class="big">' + fmt(t.totalSub) + '</div>' +
+          '<div class="small">Isplaćuje se vrtiću, a vrtić je refundira roditelju.</div></div>';
+  html += '<div class="persp-card rod"><div class="head"><span class="ic">👨‍👩‍👧‍👦</span>Roditelj — mjesečno</div>' +
+          '<div class="big">' + fmt(t.totalRodSkol) + '</div>' +
+          '<div class="small">Mjesečno (školarina − subvencija). Prvi mjesec s jednokratnim troškovima: <strong>' + fmt(t.totalRodSkol + t.totalJednokratno) + '</strong>.</div></div>';
+  html += '</div>';
 
-    html += '</tbody></table></div>';
+  el.innerHTML = html;
+}
 
-    // Sumarno
-    html += '<div class="summary">';
-    html += '<h4>Sumarno (mjesečno)</h4>';
-
-    html += '<div class="summary-row">';
-    html += '<span>Ukupna puna školarina (IMH)</span>';
-    html += '<span class="val">' + fmt(totalPuna) + '</span>';
-    html += '</div>';
-
-    html += '<div class="summary-row">';
-    html += '<span>Ukupna subvencija Ministarstva</span>';
-    html += '<span class="val green">− ' + fmt(totalSubvencija) + '</span>';
-    html += '</div>';
-
-    html += '<div class="summary-row total">';
-    html += '<span>💰 Roditelj plaća IMH</span>';
-    html += '<span class="val orange">' + fmt(totalRoditelj) + '</span>';
-    html += '</div>';
-
-    html += '</div>';
-
-    el.innerHTML = html;
+function obLine(lbl, val) {
+  return '<div class="ob-line"><span class="lbl">' + lbl + '</span><span class="amt">' + fmt(val) + '</span></div>';
 }
 
 /* ============================================================
-   FLOW DIJAGRAM
+   FLOW
    ============================================================ */
-function renderFlow(totalPuna, totalSubvencija, totalRoditelj) {
-    const flow = document.getElementById("flow");
-    const neto = document.getElementById("flowNeto");
+function renderFlow(totalSkol, totalSub, totalRodSkol) {
+  const flow = document.getElementById("flow");
+  const neto = document.getElementById("flowNeto");
+  const a1 = totalSkol > 0 ? " active" : "";
+  const a3 = totalSub > 0 ? " active" : "";
+  const a4 = totalSub > 0 ? " active" : "";
 
-    const korak1 = totalPuna;
-    const korak3 = totalSubvencija;
-    const korak4 = totalSubvencija;
-
-    const active1 = korak1 > 0 ? " active" : "";
-    const active3 = korak3 > 0 ? " active" : "";
-    const active4 = korak4 > 0 ? " active" : "";
-
-    flow.innerHTML = '';
-
-    // Korak 1 — Roditelj uplaćuje
-    flow.innerHTML += '<div class="flow-step' + active1 + '">' +
-        '<div class="ico">👨‍👩‍👧‍👦</div>' +
-        '<div class="lbl">Roditelj</div>' +
-        '<div class="amt blue">' + fmt(korak1) + '</div>' +
-        '<div class="sub">uplaćuje IMH<br>puna školarina</div>' +
-        '</div>';
-
-    flow.innerHTML += '<div class="flow-arrow">→</div>';
-
-    // Korak 2 — IMH izvještaj
-    flow.innerHTML += '<div class="flow-step">' +
-        '<div class="ico">🏫</div>' +
-        '<div class="lbl">IMH</div>' +
-        '<div class="amt">' + fmt(korak3) + '</div>' +
-        '<div class="sub">podnosi mjesečni<br>izvještaj Ministarstvu</div>' +
-        '</div>';
-
-    flow.innerHTML += '<div class="flow-arrow">→</div>';
-
-    // Korak 3 — Ministarstvo
-    flow.innerHTML += '<div class="flow-step' + active3 + '">' +
-        '<div class="ico">🏛️</div>' +
-        '<div class="lbl">Ministarstvo</div>' +
-        '<div class="amt green">' + fmt(korak3) + '</div>' +
-        '<div class="sub">isplaćuje subvenciju<br>na račun IMH-a</div>' +
-        '</div>';
-
-    flow.innerHTML += '<div class="flow-arrow">→</div>';
-
-    // Korak 4 — Povrat roditelju
-    flow.innerHTML += '<div class="flow-step' + active4 + '">' +
-        '<div class="ico">💸</div>' +
-        '<div class="lbl">IMH → Roditelj</div>' +
-        '<div class="amt green">' + fmt(korak4) + '</div>' +
-        '<div class="sub">povrat subvencije<br>na račun roditelja</div>' +
-        '</div>';
-
-    neto.textContent = fmt(totalRoditelj);
+  let h = "";
+  h += '<div class="flow-step' + a1 + '"><div class="ico">👨‍👩‍👧‍👦</div><div class="lbl">Roditelj</div><div class="amt blue">' + fmt(totalSkol) + '</div><div class="sub">plaća vrtiću punu školarinu</div></div>';
+  h += '<div class="flow-arrow">→</div>';
+  h += '<div class="flow-step"><div class="ico">🏫</div><div class="lbl">Vrtić (IMH)</div><div class="amt">' + fmt(totalSkol) + '</div><div class="sub">podnosi mjesečni izvještaj Ministarstvu</div></div>';
+  h += '<div class="flow-arrow">→</div>';
+  h += '<div class="flow-step' + a3 + '"><div class="ico">🏛️</div><div class="lbl">Ministarstvo</div><div class="amt green">' + fmt(totalSub) + '</div><div class="sub">isplaćuje subvenciju vrtiću</div></div>';
+  h += '<div class="flow-arrow">→</div>';
+  h += '<div class="flow-step' + a4 + '"><div class="ico">💸</div><div class="lbl">Vrtić → Roditelj</div><div class="amt green">' + fmt(totalSub) + '</div><div class="sub">refundira subvenciju roditelju</div></div>';
+  flow.innerHTML = h;
+  neto.textContent = fmt(totalRodSkol);
 }
 
 /* ============================================================
    PRICE TABS
    ============================================================ */
 function switchPriceTab(id, btn) {
-    document.querySelectorAll(".price-tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".price-table").forEach(t => t.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("price-" + id).classList.add("active");
+  document.querySelectorAll(".price-tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".price-table").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("price-" + id).classList.add("active");
 }
 
 /* ============================================================
    RESET CIJENA
    ============================================================ */
 function resetCijene() {
-    const defaults = {
-        "cfg-imh-domace-prvo": 710,
-        "cfg-imh-domace-naredno": 570,
-        "cfg-imh-strano-prvo": 810,
-        "cfg-imh-strano-naredno": 650,
-        "cfg-idss-domace-prvo": 750,
-        "cfg-idss-domace-naredno": 600,
-        "cfg-idss-strano-prvo": 850,
-        "cfg-idss-strano-naredno": 680,
-        "cfg-cl6-cjelo": 235,
-        "cfg-cl6-pola": 120,
-        "cfg-cl7-cjelo": 300,
-        "cfg-cl7-pola": 150
-    };
-    for (const id in defaults) {
-        const el = document.getElementById(id);
-        if (el) el.value = defaults[id];
-    }
-    izracunaj();
+  const defaults = {
+    "cfg-imh-domace-prvo": 710, "cfg-imh-domace-naredno": 570, "cfg-imh-strano-prvo": 810, "cfg-imh-strano-naredno": 650,
+    "cfg-idss-domace-prvo": 750, "cfg-idss-domace-naredno": 600, "cfg-idss-strano-prvo": 850, "cfg-idss-strano-naredno": 680,
+    "cfg-cl6-cjelo": 235, "cfg-cl6-pola": 120, "cfg-cl7-cjelo": 300, "cfg-cl7-pola": 150
+  };
+  for (const id in defaults) { const el = document.getElementById(id); if (el) el.value = defaults[id]; }
+  izracunaj();
+}
+
+/* ============================================================
+   DOKUMENTI
+   ============================================================ */
+/* Dokumenti se nalaze u istoj mapi kao ovaj HTML (repozitorij porodice-3plus).
+   Relativni linkovi: klik otvara/pregledava konkretni dokument, a dugme ga preuzima.
+   Korisnik se NIKADA ne usmjerava na listu svih dokumenata. */
+const DOKUMENTI = [
+  { naziv: "Program sufinansiranja boravka djece predškolske dobi (2026/27)", opis: "„Službene novine Kantona Sarajevo“, broj 16/26 · PDF", fajl: "PROGRAM SUFINANSIRANJA BORAVKA DJECE PREDŠKOLSKE DOBI U PRIVATNIM PREDŠKOLSKIM USTANOVAMA NA PODRUČJU KANTONA SARAJEVO U ŠKOLSKOJ 2026_27. GODINI.pdf", ico: "📜" },
+  { naziv: "Pravilnik o primjeni Programa — porodice 3+ (2026/27)", opis: "Pravilnik P.P.U. IMH · čl. 6–10 · Word", fajl: "Pravilnik-sufinansiranje-porodice-3-plus-2026-27.docx", ico: "📘" },
+  { naziv: "Pravilnik o formiranju cijena (2026/27)", opis: "Pravilnik P.P.U. IMH · Word", fajl: "IMH_Pravilnik_O_Formiranju_Cijena_2026-2027.docx", ico: "📗" },
+  { naziv: "Cjenovnik 2026/2027", opis: "P.P.U. IMH Sarajevo · PDF", fajl: "IMH_Cjenovnik_2026-2027.pdf", ico: "💵" },
+  { naziv: "Prilog 3 — Algoritam sufinansiranja", opis: "Dijagram toka postupka · PDF", fajl: "Prilog-3-Algoritam-sufinansiranja.pdf", ico: "🔀" },
+  { naziv: "Zakon o predškolskom odgoju i obrazovanju u KS (26/08)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_sn_ks_26_08.pdf", ico: "⚖️" },
+  { naziv: "Zakon o izmjenama i dopunama (33/21)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjenama_i_dopunama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_snks_br_33_21.pdf", ico: "⚖️" },
+  { naziv: "Zakon o izmjenama i dopunama (21/09)", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjenama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo_sn_ks_21_09.pdf", ico: "⚖️" },
+  { naziv: "Zakon o izmjeni i dopunama", opis: "„Službene novine KS“ · PDF", fajl: "zakon_o_izmjeni_i_dopunama_zakona_o_predskolskom_odgoju_i_obrazovanju_u_kantonu_sarajevo.pdf", ico: "⚖️" },
+  { naziv: "Izmjena Instrukcije o upisu djece (2026/27)", opis: "Ministarstvo za odgoj i obrazovanje KS · PDF", fajl: "S36BW-0i26051110270.pdf", ico: "📄" }
+];
+
+function renderDokumenti() {
+  const el = document.getElementById("docList");
+  el.innerHTML = DOKUMENTI.map(d => {
+    const href = encodeURI(d.fajl);
+    return '<div class="doc-item">' +
+      '<a class="doc-open" href="' + href + '" target="_blank" rel="noopener">' +
+        '<span class="ico" aria-hidden="true">' + d.ico + '</span>' +
+        '<span class="meta"><strong>' + d.naziv + '</strong><span>' + d.opis + '</span></span>' +
+      '</a>' +
+      '<a class="doc-dl" href="' + href + '" download aria-label="Preuzmi: ' + d.naziv + '" title="Preuzmi dokument">' +
+        '<span class="ar" aria-hidden="true">⬇</span><span>Preuzmi</span>' +
+      '</a>' +
+    '</div>';
+  }).join("");
 }
 
 /* ============================================================
    INICIJALIZACIJA
    ============================================================ */
 document.addEventListener("DOMContentLoaded", function () {
-    // Datum
-    const d = new Date();
-    const mjeseci = ["januar","februar","mart","april","maj","juni","juli","august","septembar","oktobar","novembar","decembar"];
-    document.getElementById("datum").textContent = d.getDate() + ". " + mjeseci[d.getMonth()] + " " + d.getFullYear() + ".";
+  const d = new Date();
+  const mjeseci = ["januar","februar","mart","april","maj","juni","juli","august","septembar","oktobar","novembar","decembar"];
+  document.getElementById("datum").textContent = d.getDate() + ". " + mjeseci[d.getMonth()] + " " + d.getFullYear() + ".";
 
-    // Inicijalizacija djece
-    state.djeca = [
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false },
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false },
-        { uzrast: "vrtic", tip: "cjelodnevni", uIMH: true, odricanje: false }
-    ];
-    document.getElementById("brojDjece").value = 3;
-
-    renderDjecu();
+  state.djeca = [
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 },
+    { status: "imh", tip: "cjelodnevni", odricanje: false, ispis: false, dani: 15, ukupnoDana: 30 }
+  ];
+  document.getElementById("brojDjece").value = 3;
+  renderDokumenti();
+  renderDjecu();
 });
 </script>
 
