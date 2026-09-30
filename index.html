@@ -97,10 +97,7 @@ button{font-family:inherit}
 }
 .top-bar .wrap{display:flex;align-items:center;gap:18px;min-height:62px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.2px}
-.brand-logo{width:34px;height:34px;flex:none;border-radius:9px;background:linear-gradient(135deg,var(--gold-500),var(--gold-600));display:grid;place-items:center;color:var(--navy-900);font-weight:900;font-size:15px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
-.brand-text{display:flex;flex-direction:column;line-height:1.12}
-.brand-name{font-size:14.5px}
-.brand-loc{font-size:11px;color:#9fb4d4;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.brand-logo{min-width:34px;height:34px;padding:0 7px;flex:none;border-radius:9px;background:linear-gradient(135deg,var(--gold-500),var(--gold-600));display:grid;place-items:center;color:var(--navy-900);font-weight:900;font-size:15px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
 .top-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
 .top-nav a{
   color:#c8d6ee;font-size:13.5px;font-weight:600;padding:8px 13px;border-radius:9px;
@@ -429,6 +426,14 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 .settings[open] summary::after{transform:rotate(180deg)}
 .settings-body{padding:0 20px 22px}
 .settings-hint{font-size:12.5px;color:var(--ink-500);margin-bottom:16px;line-height:1.55;padding:11px 14px;background:var(--amber-100);border-radius:var(--radius-sm);border:1px solid #fde68a}
+.settings-live{margin:0 0 16px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:linear-gradient(180deg,#f7faff,#eef4ff)}
+.settings-live .sl-title{font-weight:800;font-size:12.5px;color:var(--navy-900);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.settings-live .sl-title::before{content:"\25CF";color:var(--green-500);font-size:10px;line-height:1}
+.settings-live .sl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.settings-live .sl-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.settings-live .sl-item span{font-size:10px;color:var(--ink-500);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.settings-live .sl-item b{font-size:15px;color:var(--navy-900);font-variant-numeric:tabular-nums}
+@media(max-width:640px){.settings-live .sl-grid{grid-template-columns:1fr}}
 .settings h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-500);margin:18px 0 10px}
 .price-edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 
@@ -438,7 +443,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 .footer{margin-top:clamp(34px,4vw,70px);background:var(--navy-900);color:#c8d6ee;padding-block:30px}
 .footer .wrap{display:flex;flex-direction:column;gap:8px}
 .footer-brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:15px}
-.footer-brand .brand-logo{width:32px;height:32px}
+.footer-brand .brand-logo{width:32px;height:32px;min-width:32px;padding:0}
 .footer p{font-size:13px;margin:0;max-width:100ch;line-height:1.6}
 .footer .muted{font-size:11.5px;opacity:.65}
 
@@ -458,33 +463,87 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 .kv span{color:var(--ink-500)}
 
 /* ============================================================
+   PRINT-ONLY / LOGO
+   ============================================================ */
+.print-only{display:none}
+.print-scenario{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0 12px;font-size:12.5px;background:#f8fafc}
+.print-scenario .ps-title{font-weight:800;color:var(--navy-900);margin-bottom:4px}
+.print-scenario .ps-line{margin:2px 0;color:var(--ink-700)}
+.brand-logo img{max-height:34px;max-width:170px;width:auto;display:block}
+.brand-logo.has-img{background:transparent;box-shadow:none;padding:0;min-width:0;width:auto;height:auto;border-radius:0}
+.brand-logo .brand-logo-fb{display:none}
+.brand-logo.logo-failed{background:linear-gradient(135deg,var(--gold-500),var(--gold-600));padding:0 7px;min-width:34px;width:auto}
+.brand-logo.logo-failed .brand-logo-fb{display:block}
+
+/* ============================================================
    PRINT
    ============================================================ */
 @media print{
-  :root{--pad:12mm}
-  body{background:#fff;font-size:10.5pt}
-  .no-print,.top-bar,.btn,.price-tabs,.settings{display:none!important}
-  .hero{color:#000;background:#fff!important;border-bottom:2px solid #000}
-  .hero h1,.hero-sub{color:#000!important}
-  .hero::after{display:none}
-  .hero-badge{background:#f2f2f2!important;border-color:#ccc!important;color:#000!important}
-  .card,.flow-step,.persp-card,.legal-item{box-shadow:none!important;border:1px solid #ccc!important}
-  .card{break-inside:auto}
-  .flow-step,.persp-card,.legal-item,.summary-row,.ob-card{break-inside:avoid}
-  .section{break-inside:auto;margin-top:10mm}
-  .section-head{break-after:avoid}
-  table.data{min-width:0!important}
-  table.data th{background:#eee!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  table.data tr{break-inside:avoid}
-  .summary h4{background:#eee!important;color:#000!important}
+  :root{--pad:7mm}
+  html,body{background:#fff!important}
+  body{font-size:7.4pt;line-height:1.26;color:#000}
+  .no-print,.top-bar,.btn,.price-tabs,.settings,.hero,.intro-card,#uputstvo,#pravni,#cjenovnik,.footer{display:none!important}
+  .print-only{display:block!important}
+  .wrap{width:100%;padding-inline:0}
+  .section{margin-top:2.4mm!important}
+  .section-head{margin-bottom:1.4mm;gap:5px}
+  .section-head .icon{font-size:11pt;width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+  .section-head h2{font-size:11pt;line-height:1.15}
+  .section-head .sub{font-size:6.6pt}
+  .card{border:none!important;box-shadow:none!important;padding:0!important;background:none!important;border-radius:0!important}
+  .card-title{font-size:10pt;margin-bottom:1mm}
+  .card-desc{font-size:6.6pt;margin-bottom:1.2mm;line-height:1.3}
+  .result-alert{font-size:6.1pt;padding:1.2mm 2mm;margin-bottom:1.2mm;border-radius:1.4mm;line-height:1.28}
+  .result-alert .ico{font-size:8pt}
+  .print-scenario{font-size:6.1pt;padding:1.2mm 2mm;margin:0 0 1.2mm;border-radius:1.4mm;background:#f4f7fb!important}
+  .print-scenario .ps-title{font-size:6.5pt;margin-bottom:0.5mm}
+  .print-scenario .ps-line{margin:0.2mm 0}
+  .obracun-title{font-size:6.4pt;margin:1.3mm 0 0.9mm}
+  .obracun-title::before{height:9px}
+  .ob-grid{grid-template-columns:repeat(3,1fr);gap:1.5mm}
+  .ob-card{border:.5pt solid #c3ccd8!important;border-radius:1.4mm;break-inside:avoid}
+  .ob-head{padding:0.9mm 1.3mm;gap:4px}
+  .ob-num{width:auto!important;min-width:12px!important;height:auto!important;padding:0 3px!important;font-size:6.2pt!important;border-radius:3px!important}
+  .ob-ttl{font-size:6.1pt!important;line-height:1.14}
+  .ob-ttl small{font-size:5.3pt!important}
+  .ob-tags{font-size:5pt!important;gap:3px!important}
+  .tag{font-size:4.7pt!important;padding:0.2mm 0.9mm!important;border-radius:3px!important}
+  .ob-body{grid-template-columns:1fr 1fr}
+  .ob-group{padding:0.9mm 1.3mm}
+  .ob-group+.ob-group{border-left:.5pt solid #dbe2ea!important}
+  .ob-ghead{font-size:5.1pt!important;margin-bottom:0.5mm!important}
+  .ob-line{font-size:5.7pt;padding:0.15mm 0;line-height:1.24}
+  .ob-line.total{margin-top:0.5mm;padding-top:0.7mm}
+  .ob-line.total .amt{font-size:6.3pt}
+  .ob-foot{padding:0.8mm 1.3mm;font-size:5.1pt;gap:4px}
+  .ob-note{padding:0.7mm 1.3mm;font-size:4.9pt;line-height:1.24}
+  .summary{margin-top:1.4mm;border-radius:1.4mm}
+  .summary h4{font-size:6.5pt;padding:0.9mm 1.6mm}
+  .summary-row{padding:0.6mm 1.6mm;font-size:5.9pt;break-inside:avoid}
+  .summary-row .summary-sub{display:none!important}
+  .summary-row.total{border-top:1pt solid #d4a017}
+  .summary-row.total .val{font-size:7.2pt}
+  .persp{grid-template-columns:repeat(3,1fr)!important;gap:1.5mm;margin-top:1.4mm}
+  .persp-card{padding:1.3mm;border:.5pt solid #c3ccd8!important;border-radius:1.4mm}
+  .persp-card .head{font-size:5.7pt;margin-bottom:0.5mm;gap:4px}
+  .persp-card .head .ic{width:auto!important;height:auto!important;font-size:8pt;background:none!important}
+  .persp-card .big{font-size:9.5pt}
+  .persp-card .small{font-size:4.9pt;margin-top:0.3mm;line-height:1.24}
+  .flow{flex-wrap:nowrap!important;gap:1.1mm;margin-top:0.5mm}
+  .flow-step{flex:1 1 0!important;min-width:0!important;padding:1.3mm 0.9mm;border:.5pt solid #c3ccd8!important;border-radius:1.4mm;box-shadow:none!important}
+  .flow-step .ico{font-size:10pt}
+  .flow-step .lbl{font-size:4.9pt;margin-top:0.3mm}
+  .flow-step .amt{font-size:7.4pt;margin-top:0.3mm}
+  .flow-step .sub{font-size:4.5pt;margin-top:0.3mm;line-height:1.2}
+  .flow-arrow{font-size:8pt;transform:none!important;width:auto!important;height:auto!important;flex:none}
+  .flow-result{margin-top:1.2mm;padding:1.3mm 2mm;border-radius:1.4mm;background:#eef2f7!important;color:#000!important}
+  .flow-result .lbl{font-size:5.9pt;color:#334!important}
+  .flow-result .amt{font-size:10pt;color:#000!important}
   a{color:#000!important;text-decoration:none!important}
-  .flow-result{background:#eee!important;color:#000!important}
-  .flow-result .amt{color:#000!important}
-  .persp{grid-template-columns:repeat(3,1fr)!important}
+  table.data th{background:#eee!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .grid-calc{grid-template-columns:1fr!important}
-  .grid-2{grid-template-columns:1fr 1fr!important}
 }
-@page{size:A4;margin:12mm}
+@page{size:A4;margin:7mm}
 </style>
 </head>
 <body>
@@ -495,11 +554,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 <header class="top-bar no-print">
   <div class="wrap">
     <div class="brand">
-      <span class="brand-logo" aria-hidden="true">IMH</span>
-      <span class="brand-text">
-        <span class="brand-name">International Montessori House</span>
-        <span class="brand-loc">Sarajevo</span>
-      </span>
+      <span class="brand-logo has-img" aria-hidden="true"><img src="data:image/png;base64,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" alt="International Montessori House Sarajevo" onerror="this.parentNode.classList.remove('has-img');this.parentNode.classList.add('logo-failed');this.remove()"><span class="brand-logo-fb">IMH</span></span>
     </div>
     <nav class="top-nav" aria-label="Navigacija">
       <a href="#uputstvo">Uputstvo</a>
@@ -601,7 +656,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
         <div class="form-row">
           <div class="form-group">
             <label for="lice">Status lica</label>
-            <select id="lice" onchange="izracunaj()">
+            <select id="lice" oninput="izracunaj()" onchange="izracunaj()">
               <option value="domace">Domaće lice (BiH, KS)</option>
               <option value="strano">Strano lice</option>
             </select>
@@ -613,7 +668,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
         </div>
 
         <label class="checkbox-row">
-          <input type="checkbox" id="august" onchange="izracunaj()">
+          <input type="checkbox" id="august" oninput="izracunaj()" onchange="izracunaj()">
           <span><strong>Obračun za august</strong> (posljednji mjesec školske godine) — subvencija Ministarstva umanjuje se za 50&nbsp;%.</span>
         </label>
 
@@ -628,6 +683,7 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
       <!-- REZULTAT -->
       <div class="card" id="rezultatCard">
         <div class="card-title">Rezultat obračuna</div>
+        <div class="print-only" id="printScenario"></div>
         <div class="card-desc" id="rezultatOpis">Popunite podatke o djeci da biste vidjeli obračun.</div>
         <div id="rezultat">
           <div class="result-empty">
@@ -809,12 +865,12 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
       <span class="icon" aria-hidden="true">📂</span>
       <div>
         <h2>Zvanični dokumenti</h2>
-        <span class="sub">Klikom na naziv dokumenta otvarate i možete preuzeti konkretni dokument.</span>
+        <span class="sub">Dokumenti se otvaraju direktno iz zvaničnog GitHub repozitorija <strong>porodice-3plus</strong>.</span>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-desc">Provjereni zvanični dokumenti relevantni za obračun sufinansiranja. Klik na naziv otvara dokument u pregledu, a dugme <strong>Preuzmi</strong> preuzima taj dokument — bez usmjeravanja na listu svih dokumenata.</div>
+      <div class="card-desc">Provjereni zvanični dokumenti relevantni za obračun sufinansiranja, objavljeni u repozitoriju <strong>porodice-3plus</strong>. Klik na naziv otvara <strong>konkretni dokument</strong> na GitHub-u, a dugme <strong>Preuzmi</strong> preuzima taj fajl — bez usmjeravanja na početnu stranicu repozitorija.</div>
       <div class="doc-list" id="docList"></div>
     </div>
   </section>
@@ -829,28 +885,30 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
         Ako dođe do promjene cjenovnika ili uslova, ovdje možete privremeno izmijeniti parametre. Nakon izmjene, kalkulator se automatski ažurira. Za trajnu izmjenu potrebno je ažurirati kanonski dokument.
       </div>
 
+      <div class="settings-live" id="settingsLive" aria-live="polite"></div>
+
       <h4>IMH — mjesečna školarina</h4>
       <div class="price-edit-grid">
-        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-imh-domace-prvo" value="710" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-imh-domace-naredno" value="570" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-imh-strano-prvo" value="810" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-imh-strano-naredno" value="650" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-imh-domace-prvo" value="710" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-imh-domace-naredno" value="570" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-imh-strano-prvo" value="810" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-imh-strano-naredno" value="650" oninput="izracunaj()" onchange="izracunaj()"></div>
       </div>
 
       <h4>IDSS — mjesečna školarina</h4>
       <div class="price-edit-grid">
-        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-idss-domace-prvo" value="750" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-idss-domace-naredno" value="600" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-idss-strano-prvo" value="850" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-idss-strano-naredno" value="680" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — prvo dijete</label><input type="number" id="cfg-idss-domace-prvo" value="750" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Domaće — naredno dijete</label><input type="number" id="cfg-idss-domace-naredno" value="600" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — prvo dijete</label><input type="number" id="cfg-idss-strano-prvo" value="850" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Strano — naredno dijete</label><input type="number" id="cfg-idss-strano-naredno" value="680" oninput="izracunaj()" onchange="izracunaj()"></div>
       </div>
 
       <h4>Subvencije (fiksni iznosi)</h4>
       <div class="price-edit-grid">
-        <div class="form-group"><label>Čl. 6 — cjelodnevni</label><input type="number" id="cfg-cl6-cjelo" value="235" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Čl. 6 — poludnevni</label><input type="number" id="cfg-cl6-pola" value="120" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Čl. 7 — cjelodnevni</label><input type="number" id="cfg-cl7-cjelo" value="300" onchange="izracunaj()"></div>
-        <div class="form-group"><label>Čl. 7 — poludnevni</label><input type="number" id="cfg-cl7-pola" value="150" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 6 — cjelodnevni</label><input type="number" id="cfg-cl6-cjelo" value="235" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 6 — poludnevni</label><input type="number" id="cfg-cl6-pola" value="120" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 7 — cjelodnevni</label><input type="number" id="cfg-cl7-cjelo" value="300" oninput="izracunaj()" onchange="izracunaj()"></div>
+        <div class="form-group"><label>Čl. 7 — poludnevni</label><input type="number" id="cfg-cl7-pola" value="150" oninput="izracunaj()" onchange="izracunaj()"></div>
       </div>
 
       <div class="btn-group">
@@ -867,10 +925,8 @@ table.data .money-neg{text-align:right;font-variant-numeric:tabular-nums;font-we
 <footer class="footer">
   <div class="wrap">
     <div class="footer-brand">
-      <span class="brand-logo" aria-hidden="true">IMH</span>
-      <span>International Montessori House Sarajevo</span>
+      <span class="brand-logo has-img" aria-hidden="true"><img src="data:image/png;base64,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" alt="International Montessori House Sarajevo" onerror="this.parentNode.classList.remove('has-img');this.parentNode.classList.add('logo-failed');this.remove()"><span class="brand-logo-fb">IMH</span></span>
     </div>
-    <p>Standalone dokument izrađen na osnovu kanonskog sadržaja repozitorija <strong>porodice-3plus</strong> i važeće legislative Kantona Sarajevo.</p>
     <p class="muted">Verzija dokumenta: 2026/2027 · Posljednje ažuriranje: <span id="datum">—</span></p>
   </div>
 </footer>
@@ -1177,6 +1233,18 @@ function renderRezultat(rezultati, t) {
   const opis = document.getElementById("rezultatOpis");
   const obracunatih = rezultati.filter(r => r.obracun).length;
 
+  // Live pregled unutar panela podešavanja — vidljiv odmah pri izmjeni cijena
+  const sl = document.getElementById("settingsLive");
+  if (sl) {
+    const ima = obracunatih > 0;
+    sl.innerHTML = '<div class="sl-title">Trenutni obračun (ažurira se odmah pri izmjeni cijena)</div>' +
+      '<div class="sl-grid">' +
+        '<div class="sl-item"><span>Vrtić — mjesečno</span><b>' + (ima ? fmt(t.totalSkol) : "—") + '</b></div>' +
+        '<div class="sl-item"><span>Ministarstvo — subvencija</span><b>' + (ima ? fmt(t.totalSub) : "—") + '</b></div>' +
+        '<div class="sl-item"><span>Roditelj — mjesečno</span><b>' + (ima ? fmt(t.totalRodSkol) : "—") + '</b></div>' +
+      '</div>';
+  }
+
   if (obracunatih === 0) {
     opis.textContent = "Nema djece upisane u IMH / IDSS predškolski program.";
     el.innerHTML = '<div class="result-alert warn"><span class="ico">⚠️</span><span>Nijedno dijete nije upisano u IMH / IDSS predškolski program. Dodajte dijete sa statusom „IMH vrtić“ ili „IDSS Predškolska grupa“.</span></div>';
@@ -1185,6 +1253,16 @@ function renderRezultat(rezultati, t) {
 
   opis.textContent = "Obračun za " + obracunatih + " " + (obracunatih === 1 ? "dijete" : "djece") + " u P.P.U. IMH — prema Pravilniku o formiranju cijena (čl. 1 jednokratni troškovi · čl. 2 školarina).";
   if (state.august) opis.textContent += " (August — subvencija umanjena 50 %.)";
+
+  // Print-only scenario summary (reflektuje aktuelno stanje obračuna)
+  const ps = document.getElementById("printScenario");
+  if (ps) {
+    const liceTxt = state.lice === "strano" ? "Strano lice" : "Domaće lice (BiH, KS)";
+    const kids = rezultati.map(r => r.redniPoRodjenju + ") " + STATUS_LABEL[r.status] + (r.obracun ? " — " + (r.tip === "poludnevni" ? "poludnevni" : "cjelodnevni") : "")).join("  ·  ");
+    ps.innerHTML = '<div class="print-scenario"><div class="ps-title">Scenario obračuna (aktuelno stanje)</div>' +
+      '<div class="ps-line"><b>Status lica:</b> ' + liceTxt + ' · <b>Ukupno djece:</b> ' + rezultati.length + (state.august ? ' · <b>August:</b> subvencija −50 %' : '') + '</div>' +
+      '<div class="ps-line"><b>Djeca:</b> ' + kids + '</div></div>';
+  }
 
   let html = "";
   html += state.august
@@ -1346,9 +1424,11 @@ function resetCijene() {
 /* ============================================================
    DOKUMENTI
    ============================================================ */
-/* Dokumenti se nalaze u istoj mapi kao ovaj HTML (repozitorij porodice-3plus).
-   Relativni linkovi: klik otvara/pregledava konkretni dokument, a dugme ga preuzima.
-   Korisnik se NIKADA ne usmjerava na listu svih dokumenata. */
+/* Dokumenti su objavljeni u zvaničnom GitHub repozitoriju porodice-3plus.
+   Svaki link vodi DIREKTNO na konkretni fajl (bez liste/početne stranice repozitorija):
+   - "Otvori"  -> GitHub prikaz fajla (blob) u novom tabu
+   - "Preuzmi" -> sirovi fajl (raw) za preuzimanje
+   Korisnik se NIKADA ne usmjerava na početnu stranicu GitHub-a. */
 const DOKUMENTI = [
   { naziv: "Program sufinansiranja boravka djece predškolske dobi (2026/27)", opis: "„Službene novine Kantona Sarajevo“, broj 16/26 · PDF", fajl: "PROGRAM SUFINANSIRANJA BORAVKA DJECE PREDŠKOLSKE DOBI U PRIVATNIM PREDŠKOLSKIM USTANOVAMA NA PODRUČJU KANTONA SARAJEVO U ŠKOLSKOJ 2026_27. GODINI.pdf", ico: "📜" },
   { naziv: "Pravilnik o primjeni Programa — porodice 3+ (2026/27)", opis: "Pravilnik P.P.U. IMH · čl. 6–10 · Word", fajl: "Pravilnik-sufinansiranje-porodice-3-plus-2026-27.docx", ico: "📘" },
@@ -1362,16 +1442,24 @@ const DOKUMENTI = [
   { naziv: "Izmjena Instrukcije o upisu djece (2026/27)", opis: "Ministarstvo za odgoj i obrazovanje KS · PDF", fajl: "S36BW-0i26051110270.pdf", ico: "📄" }
 ];
 
+const GITHUB_OWNER = "Internationale-Deutsche-Schule-Sarajevo";
+const GITHUB_REPO = "porodice-3plus";
+const GITHUB_BRANCH = "main";
+const GITHUB_VIEW = "https://github.com/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/blob/" + GITHUB_BRANCH + "/";
+const GITHUB_RAW  = "https://raw.githubusercontent.com/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/" + GITHUB_BRANCH + "/";
+
 function renderDokumenti() {
   const el = document.getElementById("docList");
   el.innerHTML = DOKUMENTI.map(d => {
-    const href = encodeURI(d.fajl);
+    const enc = encodeURIComponent(d.fajl);
+    const viewHref = GITHUB_VIEW + enc;  // direktno na fajl (GitHub pregled)
+    const dlHref   = GITHUB_RAW  + enc;  // sirovi fajl za preuzimanje
     return '<div class="doc-item">' +
-      '<a class="doc-open" href="' + href + '" target="_blank" rel="noopener">' +
+      '<a class="doc-open" href="' + viewHref + '" target="_blank" rel="noopener" title="Otvori na GitHub-u: ' + d.naziv + '">' +
         '<span class="ico" aria-hidden="true">' + d.ico + '</span>' +
         '<span class="meta"><strong>' + d.naziv + '</strong><span>' + d.opis + '</span></span>' +
       '</a>' +
-      '<a class="doc-dl" href="' + href + '" download aria-label="Preuzmi: ' + d.naziv + '" title="Preuzmi dokument">' +
+      '<a class="doc-dl" href="' + dlHref + '" target="_blank" rel="noopener" download aria-label="Preuzmi: ' + d.naziv + '" title="Preuzmi dokument">' +
         '<span class="ar" aria-hidden="true">⬇</span><span>Preuzmi</span>' +
       '</a>' +
     '</div>';
